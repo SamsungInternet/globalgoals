@@ -21,7 +21,7 @@ function getWallpapers(){
                                 `<p>${wallpaper.data}</p>`}
                         <p>${wallpaper.credits}</p>
                         <p>#GlobalGoal${wallpaper.goalNo}</p>
-                        <button>Learn More</button>`
+                        <button id="link-goal">Learn More</button>`
 
     return finalTemplate;
     
@@ -32,10 +32,16 @@ window.addEventListener('load', () => {
     let modal = document.getElementsByClassName('modal')[0];
     let close = document.getElementsByClassName('close')[0];
     let goalDiv = document.getElementsByClassName('goal-img')[0]; 
+   
 
     goalDiv.innerHTML += getWallpapers();
     
-    
+    let linkGoal = document.querySelector('#link-goal');
+
+    linkGoal.onclick = function(){
+        window.document.location = './goal.html';
+    }
+
     link.onclick = function(){
         modal.style.display = "block";
     }
