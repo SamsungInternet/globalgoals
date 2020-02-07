@@ -8,9 +8,9 @@ if (window.matchMedia('(prefers-color-scheme: dark)').media === 'not all') {
 }
 
 window.addEventListener('load', () => {
-    /*Sticky header global app*/
+    
+   /*Sticky header global app*/
     let _page_title = document.querySelector('#_page_title');
-
     let observerStickyTitle = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.intersectionRatio > 0) {
