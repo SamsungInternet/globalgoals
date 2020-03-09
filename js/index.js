@@ -21,7 +21,7 @@ function getWallpapers(){
                                 `<p>${wallpaper.data}</p>`}
                         <p>${wallpaper.credits}</p>
                         <p>#GlobalGoal${wallpaper.goalNo}</p>
-                        <button id="link-goal">Learn More</button>`
+                        <a href="goal.html?no=${wallpaper.goalNo}" id="link-goal">Learn More</button>`
 
     return finalTemplate;
     
@@ -39,6 +39,7 @@ window.addEventListener('load', () => {
     let linkGoal = document.querySelector('#link-goal');
 
     linkGoal.onclick = function(){
+        let goalNo = 
         window.document.location = './goal.html';
     }
 

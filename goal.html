@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/gg-light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">
     <link href="css/_template.css" rel="stylesheet">
     <script src="js/_gg_ui.js"></script>
+    <script src="js/goal.js"></script>
+    <script src="assets/posts.js"></script>
     <link rel="shortcut icon" type="image/png" href="images/raster/icn_goals_colored.png"/>
     <title>Title</title>
 </head>
@@ -17,12 +19,75 @@
     <div id="main-shell">
         <main id="_page_main_container">
             <header id="_page_title">
-                <h1>Template Title</h1>
-                <p>Description specific to this section.</p>
+                <h1>Goal <span id="no"></span></h1>
             </header>
+            
             <div class="_sticky_title"><h2>Sticky Title</h2></div>
             <div id="_main_content">
                 <p>Main content</p>
+                <div class="oui-bubble gg-bubble-horz goal-desc">
+                    <img src="images/gg_icons/gg_${goal.no}_icon.svg" class="bubble-img-horz">
+                    <div class="bubble-cont-horz">
+                        <h3>Goal ${goal.no}: ${goal.subtitle}</h3>
+                        <p>${goal.description}</p>
+                    </div>
+                    <a href="${goal.url}">Learn More</a>                    
+                </div>
+                <div class="oui-bubble gg-bubble-horz goal-prob">
+                    <div class="bubble-cont-horz">
+                        <h3>Problems and Solutions</h3>
+                        <p>${goal.problem}</p>
+                    </div>
+                </div>
+                <div class="oui-bubble gg-bubble-horz add">
+                    <div class="bubble-cont-horz">
+                        <h3>Random Image Add</h3>
+                    </div>
+                </div>
+                <div class="oui-bubble gg-bubble-horz facts">
+                    <div class="bubble-cont-horz">
+                        <h3>Facts and figures</h3>
+                    </div>
+                </div>
+                <div class="oui-bubble gg-bubble-horz support">
+                    <div class="bubble-cont-horz">
+                        <h3>Show Your Support</h3>
+                    </div>
+                </div>
+                <div class="oui-bubble gg-bubble-vert">
+                    <div class="bubble-cont-vert">
+                        <h3>Donate directly to the UNDP</h3>
+                        <p>Donate to the <a href=# id="undp-link">UNDP</a> to help tackle the root causes of poverty and create a better life for everyone.</p>
+                        <a href="https://give.undp.org/give/120717/#!/donation/checkout">Donate</a>
+                    </div>
+                    <img src="images/raster/hands-vert.jpg" class="bubble-img-vert">
+                </div>
+                <div class="oui-bubble gg-bubble-vert">
+                    <div class="bubble-cont-vert">
+                        <h3>Learn about the Global Goals</h3>
+                        <p>World leaders agreed to 17 goals for a better world by 2030. These goals have the power to change the world and the people in it.</p>
+                        <a href="goals.html">Learn more</a>
+                    </div>
+                    <img src="images/raster/goals-vert.jpg" class="bubble-img-vert">
+                </div>
+                <div class="oui-bubble gg-bubble-horz donate">
+                    <p>1.02</p>
+                    <p>Earned by You</p>
+                    <p>1</p>
+                    <p>Goals Supported</p>
+                    <p>0.001</p>
+                    <p>All time donations</p>
+                    <button>Donate</button>
+                </div>
+
+                <div class="oui-bubble gg-bubble-horz">
+                    <div class="bubble-cont-horz">
+                        <h3>Ads Raise Money to Help</h3>
+                        <p>When you see ads from this app, you'll earn money for donations that support the Global Goals, such as fighting to end poverty, reducing social inequality, and tackling climate change.<p>
+                    </div>
+                    <img src="images/raster/boy-horz.jpg" class="bubble-img-horz">
+                </div>
+                
             </div>
         </main>
         <img id="main-colorbar" src="images/ui_elements/colorband.svg">
