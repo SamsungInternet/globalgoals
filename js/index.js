@@ -11,10 +11,14 @@ function getWallpapers(){
 
 function getWallpapers(){
     const arrayWallpapers = wallpapersJson.wallpapers;
+    let wallpaperElement = document.getElementById('wallpaper');
+   
+
     /*Get Only Quotes and Texts*/
     let quotesAndTexts = arrayWallpapers.filter(wallpaper => wallpaper.type == 'TEXT' || wallpaper.type == 'QUOTE');
     /*Get One Random*/
     let wallpaper = quotesAndTexts[Math.floor(Math.random() * quotesAndTexts.length)];
+    wallpaperElement.className +=' gg-g'+ wallpaper.goalNo;
 
     let finalTemplate = `${wallpaper.type == 'QUOTE'? 
                                 `<img src= ${wallpaper.assetUrl} alt=${wallpaper.title}>`:
@@ -39,7 +43,6 @@ window.addEventListener('load', () => {
     let linkGoal = document.querySelector('#link-goal');
 
     linkGoal.onclick = function(){
-        let goalNo = 
         window.document.location = './goal.html';
     }
 
