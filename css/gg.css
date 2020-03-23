@@ -236,6 +236,16 @@ a:link, a:active, a:visited {
     margin-bottom: 1em;
 }
 
+.gg-bubble-vert {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 0px;
+    overflow: hidden;
+    margin-bottom: 1em;
+}
+
+
 .bubble-img-vert {
     grid-column: 2 / 3;
     width: 100%;
