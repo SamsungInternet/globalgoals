@@ -1,14 +1,4 @@
 
-/*Save Function For Fetch Call
-function getWallpapers(){
-    fetch('wallpapers.json')
-        .then(response=>response.json)
-        .then(json=>console.log(json));
-}
-
-*/
-
-
 function getWallpapers(){
     const arrayWallpapers = wallpapersJson.wallpapers;
     let wallpaperElement = document.getElementById('wallpaper');
