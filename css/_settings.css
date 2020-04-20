@@ -1,0 +1,41 @@
+.header-bg {   
+    background: linear-gradient(rgba(32,32,32,0) 0%, var(--background) 40%), url(../images/raster/goals_header.jpg);
+    background-position: top;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-size: 100vw;
+}
+
+.main-content-layout {
+    padding-bottom: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    grid-gap: 20px;
+    justify-items: stretch;
+}
+
+.oui-bubble{
+    margin-bottom: 20px;
+}
+
+.text-left{
+    text-align: left !important;
+}
+
+.modal{
+    display: none
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+@media (min-width: 500px) { 
+    .content {
+        width: 500px;
+        margin: 0 auto;
+    }
+ }
