@@ -1,0 +1,278 @@
+@import '_fonts.css';
+
+:root {
+    /*Goals palette*/
+    --gg1-no-poverty: #e5243b;
+    --gg2-zero-hunger: #DDA63A;
+    --gg3-good-health: #4c9f38;
+    --gg4-quality-education: #C5192D;
+    --gg5-gender-equality: #FF3A21;
+    --gg6-clean-water: #26bde2;
+    --gg7-clean-energy: #fcc30b;
+    --gg8-decent-work: #a21942;
+    --gg9-industry: #fd6925;
+    --gg10-reduced-inequalities: #dd1367;
+    --gg11-sustainable-cities: #fd9d24;
+    --gg12-responsible-consumption: #bf8b2e;
+    --gg13-climate-action: #3f7e44;
+    --gg14-life-below-water: #0a97d9;
+    --gg15-life-on-land: #56c02b;
+    --gg16-peace-justice: #00689d;
+    --gg17-partnerships: #19486a;
+    --gg18-global-goals: #f1f1f1;
+
+    /*ui vars*/
+    --active-category: #01b3e3;
+    --white: rgb(250, 250, 250);
+
+    /*time*/
+    --anim-titles: .5s;
+}
+
+html, body {
+    background: var(--background);
+}
+
+#main-shell {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto 5rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+#main-menu {
+    background-color: var(--background);
+    color: #929192;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+    grid-column: 1 / 2;
+    grid-template: 3 / 4;
+}
+
+#main-colorbar {
+    width: 100vw;
+    height: .7rem;
+    grid-column: 1 / 2;
+    grid-template: 2 / 3;
+}
+
+.menu-icon {
+    height: 2.5rem;
+}
+
+.main-menu-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-menu-button--active {
+    color:var(--active-category);
+}
+
+main {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    overflow: scroll;
+}
+
+#_main_content {
+    width: 80vw;
+    margin: auto;
+}
+
+h1 {
+    font-family: SamsungSharpSans-Bold;
+    font-size: 1.3rem;
+    color: white;
+}
+
+h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+}
+
+h3 {
+    font-family: SamsungSharpSans-Bold;
+    font-size: 1rem;
+}
+
+a:link, a:active, a:visited {
+    color: var(--active-category);
+    font-size: 1.3em;
+    text-decoration: none;
+}
+
+._sticky_title {
+    position: sticky;
+    top: 0px;
+    margin-top: -1rem;
+    padding: 1em 1.5em;
+    background-color: var(--background);
+    z-index: 10;
+}
+
+._sticky_title_appear {
+    animation-duration: var(--anim-titles);
+    animation-name: _sticky_opacity_on;
+    animation-fill-mode: forwards;
+}
+
+._sticky_title_disappear {
+    animation-duration: var(--anim-titles);
+    animation-name: _sticky_opacity_off;
+    animation-fill-mode: forwards;
+}
+
+@keyframes _sticky_opacity_on {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes _sticky_opacity_off {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+#_page_title {
+    margin: 4em 0em 1.5em 1.5em;
+}
+
+#_page_main_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media (max-width: 350px) { 
+    #_main_content {
+        width: 92vw;
+    }
+}
+
+.gg-g1 {
+    background-color: var(--gg1-no-poverty);
+}
+
+.gg-g2 {
+    background-color: var(--gg2-zero-hunger);
+}
+
+.gg-g3 {
+    background-color: var(--gg3-good-health);
+}
+
+.gg-g4 {
+    background-color: var(--gg4-quality-education);
+}
+
+.gg-g5 {
+    background-color: var(--gg5-gender-equality);
+}
+
+.gg-g6 {
+    background-color: var(--gg6-clean-water);
+}
+
+.gg-g7 {
+    background-color: var(--gg7-clean-energy);
+}
+
+.gg-g8 {
+    background-color: var(--gg8-decent-work);
+}
+
+.gg-g9 {
+    background-color: var(--gg9-industry);
+}
+
+.gg-g10 {
+    background-color: var(--gg10-reduced-inequalities);
+}
+
+.gg-g11 {
+    background-color: var(--gg11-sustainable-cities);
+}
+
+.gg-g12 {
+    background-color: var(--gg12-responsible-consumption);
+}
+
+.gg-g13 {
+    background-color: var(--gg13-climate-action);
+}
+
+.gg-g14 {
+    background-color: var(--gg14-life-below-water);
+}
+
+.gg-g15 {
+    background-color: var(--gg15-life-on-land);
+}
+
+.gg-g16 {
+    background-color: var(--gg16-peace-justice);
+}
+
+.gg-g17 {
+    background-color: var(--gg17-partnerships);
+}
+
+.gg-g18 {
+    background-color: var(--gg18-global-goals);
+}
+
+.gg-bubble-horz {
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto auto;
+    padding: 0px;
+    overflow: hidden;
+    margin-bottom: 1em;
+}
+
+.gg-bubble-vert {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 0px;
+    overflow: hidden;
+    margin-bottom: 1em;
+}
+
+
+.bubble-img-vert {
+    grid-column: 2 / 3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bubble-cont-vert {
+    padding: 2em 1.5em;
+}
+
+.bubble-cont-vert p {
+    margin: 1em 0em 2.5em 0em;
+}
+
+
+
+.bubble-cont-horz {
+    padding: 2em 1.5em;
+    grid-row: 2 / 3;
+}
+
+.bubble-cont-horz p {
+    margin: 1em 0em 2.5em 0em;
+}
+.bubble-img-horz {
+    grid-row: 1 / 2;
+    width: 100%;
+    object-fit: cover;
+}
