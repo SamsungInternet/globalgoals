@@ -1,0 +1,98 @@
+html, body{
+    overflow-y: hidden;
+    max-height: 100vh;
+    color: #ffffff;
+}
+
+header{
+    text-align: center;
+    position: absolute;
+    z-index: 15;
+    width: 100vw;
+    margin-top: 20px;
+}
+
+.gg-logo{
+    width: 60vw;
+}
+
+h2{
+    font-size: large;
+}
+
+p{
+    margin-top: 20px;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    scroll-snap-type: x mandatory;
+}
+
+main > article{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    z-index: 10;
+}
+
+main > article:nth-child(1){
+    background: url(../images/raster/goals_header.jpg);
+    background-size: cover;
+    background-position: right;
+}
+
+main > article:nth-child(2){
+    background: url(../images/raster/settings_header.jpg);
+    background-size: cover;
+    background-position: right;
+}
+
+article > div {
+    text-align: center;
+    margin: 0 40px;
+    margin-top: 60vh;
+}
+
+nav{
+    position: absolute;
+    bottom: 50px;
+    padding: 10px 20px;
+    display: flex;
+    margin-bottom: 20px;
+    z-index: 15;
+    width: 100vw;
+    flex-direction: column;
+}
+
+.dots{
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.dot{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: grey;
+}
+
+.dot-selected{
+    background-color: cornsilk;
+}
+
+.btn{
+    margin: 20px;
+    font-size: 12pt;
+    padding: 0 50px;
+    margin: 0 auto;
+}
+
+.hidden{
+    display: none;
+}
