@@ -15,7 +15,7 @@ function getWallpapers(){
                                 `<p>${wallpaper.data}</p>`}
                         <p>${wallpaper.credits}</p>
                         <p>#GlobalGoal${wallpaper.goalNo}</p>
-                        <a href="goal.html?no=${wallpaper.goalNo}" id="link-goal">Learn More</button>`
+                        <a href="goal.html?no=${wallpaper.goalNo}" id="link-goal">Learn More</a>`
 
     return finalTemplate;
     

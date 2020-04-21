@@ -24,7 +24,7 @@
             </header>
             
             <div class="_sticky_title">Goal</div>
-            <div id="_main_content">
+            <div id="_main_content" class="main-content-layout">
                 <div id="_goal_content">
 
                 </div>               
@@ -34,11 +34,11 @@
                 
 
                 <div class="oui-bubble gg-bubble-horz">
+                    <img src="images/raster/boy-horz.jpg" class="bubble-img-horz">
                     <div class="bubble-cont-horz">
                         <h3>Ads Raise Money to Help</h3>
                         <p>When you see ads from this app, you'll earn money for donations that support the Global Goals, such as fighting to end poverty, reducing social inequality, and tackling climate change.<p>
                     </div>
-                    <img src="images/raster/boy-horz.jpg" class="bubble-img-horz">
                 </div>
 
                 <div class="oui-bubble gg-bubble-vert">
@@ -72,6 +72,27 @@
             </a>
         </nav>
     </div>
+
+    <!--Templates-->
+    <template id="v-card-template">
+        <div class="oui-bubble gg-bubble-vert">
+            <div class="bubble-cont-vert">
+                <h3><slot name="card-title">Card Title</slot></h3>
+                <p><slot name="card-text">Card text.</slot><p>
+            </div>
+            <slot name="card-image">img src="image/path.jpg" with class="bubble-img-horz"</slot>
+        </div>
+    </template>
+
+    <template id="h-card-template">
+        <div class="oui-bubble gg-bubble-horz">
+            <div class="bubble-cont-horz">
+                <h3><slot name="card-title">Card Title</slot></h3>
+                <p><slot name="card-text">Card text.</slot><p>
+            </div>
+            <slot name="card-image">img src="image/path.jpg" with class="bubble-img-horz"</slot>
+        </div>
+    </template>
     
 </body>
 </html>

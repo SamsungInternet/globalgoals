@@ -6,13 +6,15 @@ function searchGoal(goalNo){
 
 function loadGoalCard(goal){
     let card = ` <div class="oui-bubble gg-bubble-horz goal-desc">
+                    <span class="gg-g${goal.goalNo} bubble-img-horz gg_icon_container">
+                        <img src="images/gg_icons/gg_${goal.goalNo}_icon.svg" class="goal_icon_header">
+                    </span> 
                     <div class="bubble-cont-horz">
                         <h3>Goal ${goal.goalNo}: ${goal.title}</h3>
                         <h4>${goal.subtitle}</h4>
                         <p>${goal.description}</p>
                         <a href="${goal.url}">Learn More</a>  
-                    </div>
-                    <img src="images/gg_icons/gg_${goal.goalNo}_icon.svg" class="bubble-img-horz gg-g${goal.goalNo}">                                                       
+                    </div>                                                      
                 </div>`
     document.getElementById('_goal_content').innerHTML+=card;
 }
