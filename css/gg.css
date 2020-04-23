@@ -113,7 +113,6 @@ h3 {
 
 a:link, a:active, a:visited {
     color: var(--active-category);
-    font-size: 1.3em;
     text-decoration: none;
 }
 
@@ -218,11 +217,13 @@ a:link, a:active, a:visited {
 
 /* Media Queries */
 
-@media (max-width: 350px) { 
+@media (max-width: 420px) { 
     #_main_content {
-        width: 92vw;
+        width: 99vw;
     }
 }
+
+/*Global Goals color backgrounds*/
 
 .gg-g1 {
     background-color: var(--gg1-no-poverty);
