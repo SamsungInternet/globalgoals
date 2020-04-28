@@ -2,24 +2,24 @@
 
 :root {
     /*Goals palette*/
-    --gg1-no-poverty: #e5243b;
-    --gg2-zero-hunger: #DDA63A;
-    --gg3-good-health: #4c9f38;
-    --gg4-quality-education: #C5192D;
-    --gg5-gender-equality: #FF3A21;
-    --gg6-clean-water: #26bde2;
-    --gg7-clean-energy: #fcc30b;
-    --gg8-decent-work: #a21942;
-    --gg9-industry: #fd6925;
-    --gg10-reduced-inequalities: #dd1367;
-    --gg11-sustainable-cities: #fd9d24;
-    --gg12-responsible-consumption: #bf8b2e;
-    --gg13-climate-action: #3f7e44;
-    --gg14-life-below-water: #0a97d9;
-    --gg15-life-on-land: #56c02b;
-    --gg16-peace-justice: #00689d;
-    --gg17-partnerships: #19486a;
-    --gg18-global-goals: #f1f1f1;
+    --gg1-color: #e5243b;
+    --gg2-color: #DDA63A;
+    --gg3-color: #4c9f38;
+    --gg4-color: #C5192D;
+    --gg5-color: #FF3A21;
+    --gg6-color: #26bde2;
+    --gg7-color: #fcc30b;
+    --gg8-color: #a21942;
+    --gg9-color: #fd6925;
+    --gg10-color: #dd1367;
+    --gg11-color: #fd9d24;
+    --gg12-color: #bf8b2e;
+    --gg13-color: #3f7e44;
+    --gg14-color: #0a97d9;
+    --gg15-color: #56c02b;
+    --gg16-color: #00689d;
+    --gg17-color: #19486a;
+    --gg18-color: #f1f1f1;
 
     /*ui vars*/
     --active-category: #01b3e3;
@@ -201,6 +201,19 @@ a:link, a:active, a:visited {
     width: 100%;
 }
 
+.gg-bubble-badge {
+	content: " ";
+	position: absolute;
+    left: 1.1rem;
+    top: 0px;
+    width: min-content;
+	height: 1.4rem;
+	padding: .3rem;
+    text-align: center;
+    font-family: SamsungSharpSans-Bold;
+    font-size: 1.1rem;
+}
+
 .bubble-cont-horz {
     padding: 2em 1.5em;
 }
@@ -246,73 +259,73 @@ a:link, a:active, a:visited {
 /*Global Goals color backgrounds*/
 
 .gg-g1 {
-    background-color: var(--gg1-no-poverty);
+    background-color: var(--gg1-color);
 }
 
 .gg-g2 {
-    background-color: var(--gg2-zero-hunger);
+    background-color: var(--gg2-color);
 }
 
 .gg-g3 {
-    background-color: var(--gg3-good-health);
+    background-color: var(--gg3-color);
 }
 
 .gg-g4 {
-    background-color: var(--gg4-quality-education);
+    background-color: var(--gg4-color);
 }
 
 .gg-g5 {
-    background-color: var(--gg5-gender-equality);
+    background-color: var(--gg5-color);
 }
 
 .gg-g6 {
-    background-color: var(--gg6-clean-water);
+    background-color: var(--gg6-color);
 }
 
 .gg-g7 {
-    background-color: var(--gg7-clean-energy);
+    background-color: var(--gg7-color);
 }
 
 .gg-g8 {
-    background-color: var(--gg8-decent-work);
+    background-color: var(--gg8-color);
 }
 
 .gg-g9 {
-    background-color: var(--gg9-industry);
+    background-color: var(--gg9-color);
 }
 
 .gg-g10 {
-    background-color: var(--gg10-reduced-inequalities);
+    background-color: var(--gg10-color);
 }
 
 .gg-g11 {
-    background-color: var(--gg11-sustainable-cities);
+    background-color: var(--gg11-color);
 }
 
 .gg-g12 {
-    background-color: var(--gg12-responsible-consumption);
+    background-color: var(--gg12-color);
 }
 
 .gg-g13 {
-    background-color: var(--gg13-climate-action);
+    background-color: var(--gg13-color);
 }
 
 .gg-g14 {
-    background-color: var(--gg14-life-below-water);
+    background-color: var(--gg14-color);
 }
 
 .gg-g15 {
-    background-color: var(--gg15-life-on-land);
+    background-color: var(--gg15-color);
 }
 
 .gg-g16 {
-    background-color: var(--gg16-peace-justice);
+    background-color: var(--gg16-color);
 }
 
 .gg-g17 {
-    background-color: var(--gg17-partnerships);
+    background-color: var(--gg17-color);
 }
 
 .gg-g18 {
-    background-color: var(--gg18-global-goals);
+    background-color: var(--gg18-color);
 }

@@ -63,9 +63,9 @@ window.addEventListener('load', () => {
 });
 
 /* Card creator */
-let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLanguage) => {
+let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLanguage, cBadge) => {
     let card = document.createElement('div');
-    card.setAttribute('class', getCSSCardLayout(cLayoutType, cGGNum));
+    card.setAttribute('class', getCSSCardLayout(cLayoutType, cGGNum, cBadge));
     let content;
     switch(cLayoutType) {
         case CardLayoutType.HORIZONTAL:
@@ -80,6 +80,13 @@ let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLang
             break; 
         case CardLayoutType.BLANK:
             card.innerHTML = cContent;
+            if(cBadge) {
+                let badge = document.createElement('span');
+                badge.innerText = cGGNum;
+                badge.setAttribute('class', 'gg-bubble-badge');
+                badge.setAttribute('style', `background-color: var(--gg${cGGNum}-color)`);
+                card.appendChild(badge);
+            }
             break;
         case CardLayoutType.GOAL_ICON:
             card.appendChild(getGoalIconContent(cImageUrl, cLink, cLanguage));
@@ -88,11 +95,11 @@ let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLang
     return card;
 }
 
-let getCSSCardLayout = (cLayoutType, cGGNum) =>{
+let getCSSCardLayout = (cLayoutType, cGGNum, cBadge) => {
     let classes = 'oui-bubble ';
     classes += `gg-bubble-${CardLayoutType.properties[cLayoutType].css_abbrev}`;
-    if(cGGNum != null)
-        classes += ` gg-g${cGGNum}`;
+    if(cGGNum != null && ! cBadge)
+            classes += ` gg-g${cGGNum}`;
     return classes;    
 }
 
