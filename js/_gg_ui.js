@@ -4,11 +4,13 @@ var CardLayoutType = {
     VERTICAL: 2,
     HORIZONTAL: 3,
     WALLPAPER: 4,
+    GOAL_ICON: 5,
     properties: {
         1: {name: 'blank', css_abbrev: 'blank'},
         2: {name: 'vertical', css_abbrev: 'vert'},
         3: {name: 'horizontal', css_abbrev: 'horz'},
-        4: {name: 'wallpaper', css_abbrev: 'wallp'}
+        4: {name: 'wallpaper', css_abbrev: 'wallp'},
+        5: {name: 'goal_icon', css_abbrev: 'goal'}
     }
 };
 
@@ -61,7 +63,7 @@ window.addEventListener('load', () => {
 });
 
 /* Card creator */
-let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum) => {
+let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink) => {
     let card = document.createElement('div');
     card.setAttribute('class', getCSSCardLayout(cLayoutType, cGGNum));
     let content;
@@ -79,6 +81,9 @@ let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum) => {
         case CardLayoutType.BLANK:
             card.innerHTML = cContent;
             break;
+        case CardLayoutType.GOAL_ICON:
+            card.appendChild(getGoalIconContent(cImageUrl, cLink));
+        break;
     }
     return card;
 }
@@ -114,4 +119,13 @@ let getWallpaperContent = (cImageUrl) => {
     wallpaper.setAttribute('src', cImageUrl);
     wallpaper.setAttribute('class', 'wallpaper_card');
     return wallpaper;
+};
+
+let getGoalIconContent = (cIconUrl, cLinkDestination, cLangauge) => {
+    let link = document.createElement('a');
+    link.setAttribute('href', cLinkDestination);
+    let image = document.createElement('img');
+    image.setAttribute('src', cIconUrl);
+    link.appendChild(image);
+    return link;
 };
