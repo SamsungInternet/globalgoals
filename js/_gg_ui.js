@@ -63,26 +63,26 @@ window.addEventListener('load', () => {
 });
 
 /* Card creator */
-let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink) => {
+let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLanguage) => {
     let card = document.createElement('div');
     card.setAttribute('class', getCSSCardLayout(cLayoutType, cGGNum));
     let content;
     switch(cLayoutType) {
         case CardLayoutType.HORIZONTAL:
         case CardLayoutType.VERTICAL:
-            content = getHorzVertContent(cLayoutType, cTitle, cContent, cImageUrl);
+            content = getHorzVertContent(cLayoutType, cTitle, cContent, cImageUrl, cLanguage);
             content.forEach(part => {
                 card.appendChild(part);
             });
             break;
         case CardLayoutType.WALLPAPER:
-            card.appendChild(getWallpaperContent(cImageUrl));
+            card.appendChild(getWallpaperContent(cImageUrl, cLanguage));
             break; 
         case CardLayoutType.BLANK:
             card.innerHTML = cContent;
             break;
         case CardLayoutType.GOAL_ICON:
-            card.appendChild(getGoalIconContent(cImageUrl, cLink));
+            card.appendChild(getGoalIconContent(cImageUrl, cLink, cLanguage));
         break;
     }
     return card;
@@ -114,11 +114,21 @@ let getHorzVertContent = (cLayoutType, cTitle, cContent, cImageUrl) => {
     return content;
 }
 
-let getWallpaperContent = (cImageUrl) => {
+let getWallpaperContent = (cImageUrl, cLink) => {
+    let content = null;
+
     let wallpaper = document.createElement('img');
     wallpaper.setAttribute('src', cImageUrl);
     wallpaper.setAttribute('class', 'wallpaper_card');
-    return wallpaper;
+    content = wallpaper;
+    if (cLink != null){
+        let lwallpaper = document.createElement('a');
+        lwallpaper.setAttribute('href', cLink);
+        lwallpaper.appendChild(wallpaper);
+        content = lwallpaper;
+    }
+    
+    return content;
 };
 
 let getGoalIconContent = (cIconUrl, cLinkDestination, cLangauge) => {
