@@ -14,14 +14,21 @@ header{
 
 .gg-logo{
     width: 60vw;
+    max-width: 400px;
 }
 
 h2{
     font-size: large;
+    text-shadow: black 0px 0px 10px;
+    padding: 0 15px;
 }
 
 p{
+    max-width: 400px;
+    padding: 0 25px;
+    margin: 0 auto;
     margin-top: 20px;
+    text-shadow: black 0px 0px 10px;
 }
 
 main{
@@ -38,6 +45,9 @@ main > article{
     flex-shrink: 0;
     scroll-snap-align: start;
     z-index: 10;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 main > article:nth-child(1){
@@ -54,8 +64,7 @@ main > article:nth-child(2){
 
 article > div {
     text-align: center;
-    margin: 0 40px;
-    margin-top: 60vh;
+    z-index: 10;
 }
 
 nav{
