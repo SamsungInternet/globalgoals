@@ -139,6 +139,20 @@ a:link, a:active, a:visited {
     animation-fill-mode: forwards;
 }
 
+._sticky_l_corner {
+    height: 26px;
+    position: absolute;
+    left:0px;
+    top: 42px;
+}
+
+._sticky_r_corner {
+    height: 26px;
+    position: absolute;
+    right: 0px;
+    top: 42px;
+}
+
 @keyframes _sticky_opacity_on {
     from { opacity: 0; }
     to { opacity: 1; }
