@@ -54,6 +54,10 @@ html, body {
     grid-template: 3 / 4;
 }
 
+#main-menu > a:link, #main-menu > a:visited, #main-menu > a:active {
+    color: #929192;
+}
+
 #main-colorbar {
     width: 100vw;
     height: .7rem;
