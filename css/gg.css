@@ -54,6 +54,10 @@ html, body {
     grid-template: 3 / 4;
 }
 
+#main-menu > a:link, #main-menu > a:visited, #main-menu > a:active {
+    color: #929192;
+}
+
 #main-colorbar {
     width: 100vw;
     height: .7rem;
@@ -164,8 +168,12 @@ a:link, a:active, a:visited {
 }
 
 #_page_title {
-    margin: 4em 0em 1.5em 1.5em;
-    width: 50%;
+    margin: 4em auto auto auto;
+    width: 80vw;
+}
+
+.half-width {
+    width: 60%;
 }
 
 #_page_main_container {
