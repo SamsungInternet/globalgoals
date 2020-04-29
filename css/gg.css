@@ -165,6 +165,7 @@ a:link, a:active, a:visited {
 
 #_page_title {
     margin: 4em 0em 1.5em 1.5em;
+    width: 50%;
 }
 
 #_page_main_container {
