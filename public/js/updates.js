@@ -1,3 +1,20 @@
+function loadCard(data){
+
+    if(data.type == 'WIDE'){
+        cardType = 'h-card-template';
+        img = '#template-img-horz'
+    }else{
+        cardType = 'v-card-template';
+        img = '#template-img-vert'
+    }  
+    let template = document.getElementById(cardType);
+    let templateContent = template.content;    
+    document.querySelector('#_main_content').appendChild(templateContent);
+    document.querySelector('slot[name="card-title"]').textContent = data.title;
+    document.querySelector('slot[name="card-text"]').textContent = data.message;
+    document.querySelector(img).src = data.assetUrl;
+}
+
 
 function getWallpapers(wallpapersJson){
     const arrayWallpapers = wallpapersJson.wallpapers;
@@ -26,12 +43,17 @@ window.addEventListener('load', async () => {
     let modal = document.getElementsByClassName('modal')[0];
     let close = document.getElementsByClassName('close')[0];
     let goalDiv = document.getElementsByClassName('goal-img')[0]; 
+
     const wallpapers = await fetch('/wallpapers');
     const wallpapersJson = await wallpapers.json();
-   
+
+    const coronaCards = await fetch('/corona');
+    const coronaJson = await coronaCards.json();
+    
 
     goalDiv.innerHTML += getWallpapers(wallpapersJson);
-    
+    loadCard(coronaJson);
+
     let linkGoal = document.querySelector('#link-goal');
 
     linkGoal.onclick = function(){
