@@ -8,14 +8,18 @@
     <link href="css/gg.css" rel="stylesheet">
     <link rel="stylesheet" href="css/gg-dark.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="css/gg-light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">
-    <link href="css/_template.css" rel="stylesheet"> 
+    <link href="css/_template.css" rel="stylesheet">
     <script src="js/_gg_ui.js"></script>
     <link rel="shortcut icon" type="image/png" href="images/raster/icn_goals_colored.png"/>
-    <title>Donate</title>
+    <title>Title</title>
 </head>
 <body>
     <div id="main-shell">
         <main id="_page_main_container">
+            <header id="_page_title">
+                <h1 class="half-width">Donate to the Global Goals</h1>
+                <p class="half-width">Donate money earned or donate directly to support the Global Goals.</p>
+            </header>
             <div class="_sticky_title">
                 <h2>Donate</h2>
                 <span>
@@ -23,8 +27,7 @@
                     <svg class="_sticky_r_corner" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg" fill="var(--background)"><path d="M13 0v13C13 6.722 8.54 1.477 2.619.264L0 0h13z"/></svg>
                 </span>
             </div>
-            <div id="_main_content" class="main-content-layout">
-
+            <div id="_main_content">
                 <div class="oui-bubble gg-bubble-vert">
                     <div class="bubble-cont-vert">
                         <h3>Donate directly to the UNDP</h3>
@@ -40,28 +43,27 @@
                     </div>
                     <img src="images/raster/boy-horz.jpg" class="bubble-img-horz">
                 </div>
-            </div>   
+            </div>
         </main>
         <img id="main-colorbar" src="images/ui_elements/colorband.svg">
         <nav id="main-menu">
-            <a href="updates.html" class="main-menu-button ">
-                <img src="images/ui_elements/icn_updates.svg" class="menu-icon" alt=""/>  
+            <div class="main-menu-button">
+                <img src="images/ui_elements/icn_updates_selected.svg" class="menu-icon" alt=""/>  
                 <span>Updates</span>      
-            </a>
+            </div>
             <a href="goals.html"  class="main-menu-button">
                 <img src="images/ui_elements/icn_goals.svg"  class="menu-icon" alt=""/>
                 <span>Goals</span>
             </a>
-            <div  class="main-menu-button main-menu-button--active">
+            <a href="donate.html"  class="main-menu-button">
                 <img src="images/ui_elements/icn_donate_selected.svg"  class="menu-icon" alt=""/>
                 <span>Donate</span>
-            </div>
+            </a>
             <a href="settings.html"  class="main-menu-button">
                 <img src="images/ui_elements/icn_settings.svg"  class="menu-icon" alt=""/>
                 <span>Settings</span>
             </a>
         </nav>
     </div>
-    
 </body>
 </html>
