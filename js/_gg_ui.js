@@ -76,7 +76,7 @@ let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLang
             });
             break;
         case CardLayoutType.WALLPAPER:
-            card.appendChild(getWallpaperContent(cImageUrl, cLanguage));
+            card.appendChild(getWallpaperContent(cImageUrl, cLink, cContent));
             break; 
         case CardLayoutType.BLANK:
             card.innerHTML = cContent;
@@ -121,18 +121,27 @@ let getHorzVertContent = (cLayoutType, cTitle, cContent, cImageUrl) => {
     return content;
 }
 
-let getWallpaperContent = (cImageUrl, cLink) => {
-    let content = null;
+let getWallpaperContent = (cImageUrl, cLink, cContent) => {
+    let content = document.createElement('div');
 
     let wallpaper = document.createElement('img');
     wallpaper.setAttribute('src', cImageUrl);
-    wallpaper.setAttribute('class', 'wallpaper_card');
-    content = wallpaper;
-    if (cLink != null){
+    wallpaper.setAttribute('class', 'wallpaper_image');
+    
+    if(cLink != null) {
         let lwallpaper = document.createElement('a');
         lwallpaper.setAttribute('href', cLink);
         lwallpaper.appendChild(wallpaper);
-        content = lwallpaper;
+        content.appendChild(lwallpaper);
+    }
+    else{
+        content.appendChild(wallpaper)
+    }
+    if(cContent) {
+        let details = document.createElement('span');
+        details.setAttribute('class', 'wallp_details');
+        details.innerHTML = cContent;
+        content.appendChild(details);
     }
     
     return content;
@@ -146,3 +155,5 @@ let getGoalIconContent = (cIconUrl, cLinkDestination, cLangauge) => {
     link.appendChild(image);
     return link;
 };
+
+
