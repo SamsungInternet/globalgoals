@@ -8,36 +8,60 @@
     <link href="css/gg.css" rel="stylesheet">
     <link rel="stylesheet" href="css/gg-dark.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="css/gg-light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">
-    <link href="css/_template.css" rel="stylesheet">
+    <link href="css/_settings.css" rel="stylesheet">
     <script src="js/_gg_ui.js"></script>
+    <script src="js/settings.js"></script>
     <link rel="shortcut icon" type="image/png" href="images/raster/icn_goals_colored.png"/>
-    <title>Title</title>
+    <title>Samsung | The Global Goals : Settings</title>
 </head>
 <body>
     <div id="main-shell">
-        <main id="_page_main_container">
+        <main id="_page_main_container" class="header-bg">
             <header id="_page_title">
                 <h1>Settings</h1>
                 <p>Control all your preferences for the Global Goals app.</p>
             </header>
-           
+            <div class="_sticky_title"><h2>Goals</h2></div>
+            <div class="content">
+                <a href="https://www.globalgoals.org/" target="_blank" class="oui-button text-left">About the Global Goals</a><br>
+                <a href="https://samsunginter.net/" target="_blank" class="oui-button text-left">About Samsung Internet</a><br>
+                <a id="collected-data" href="#" class="oui-button text-left">Collected data</a>
+                <a href="introduction.html" class="oui-button text-left">Introduction</a><br>
+            </div>
+            <div class="modal">
+                <div class="oui-dialog-mask"></div>
+                <div class="oui-dialog">
+                    <div class="oui-dialog-header">
+                        Collected data
+                    </div>
+                    <div class="oui-dialog-description">
+                        <p>
+                            As of today, the Samsung Global Goal PWA doesn't collect any data.
+                        </p>
+                        <div class="oui-dialog-action">
+                            <a href="#" class="oui-dialog-action-link close">Close</a>                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </main>
         <img id="main-colorbar" src="images/ui_elements/colorband.svg">
         <nav id="main-menu">
-            <div class="main-menu-button">
+            <a href="updates.html" class="main-menu-button">
                 <img src="images/ui_elements/icn_updates.svg" class="menu-icon" alt=""/>  
                 <span>Updates</span>      
-            </div>
-            <div  class="main-menu-button">
-                <img src="images/ui_elements/icn_goals.svg"  class="menu-icon" alt=""/>
+            </a>
+            <a href="goals.html" class="main-menu-button">
+                <img src="images/ui_elements/icn_goals.svg" class="menu-icon" alt=""/>
                 <span>Goals</span>
-            </div>
-            <div  class="main-menu-button">
+            </a>
+            <a href="donate.html"  class="main-menu-button">
                 <img src="images/ui_elements/icn_donate.svg"  class="menu-icon" alt=""/>
                 <span>Donate</span>
-            </div>
-            <div  class="main-menu-button">
-                <img src="images/ui_elements/icn_settings.svg"  class="menu-icon" alt=""/>
+            </a>
+            <div class="main-menu-button main-menu-button--active">
+                <img src="images/ui_elements/icn_settings_selected.svg"  class="menu-icon" alt=""/>
                 <span>Settings</span>
             </div>
         </nav>
