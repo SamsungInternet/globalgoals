@@ -297,6 +297,20 @@ span.wallp_details a, span.wallp_details a:link, span.wallp_details a:visited {
     max-height: 16rem;
 }
 
+.bubble-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: .5rem 0rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+.bubble-action {
+    margin-right: 1.5rem;
+}
+
 /* Media Queries */
 
 @media (max-width: 420px) { 

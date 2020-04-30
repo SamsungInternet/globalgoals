@@ -62,15 +62,37 @@ window.addEventListener('load', () => {
     contentCards.forEach(card => { observerCards.observe(card); });
 });
 
+/* Card creator aliases */
+
+let createBlankCard = (cContent, cGGNum, cBadge) => {
+    return createCard(CardLayoutType.BLANK, null, cContent, null, cGGNum, null, null, cBadge);
+};
+
+let createVerticalCard = (cTitle, cContent, cImageUrl, cGGNum, cActions, cLanguage) => {
+    return createCard(CardLayoutType.VERTICAL, cTitle, cContent, cImageUrl, cGGNum, null, cLanguage, 0, cActions);
+};
+
+let createHorizontalCard = (cTitle, cContent, cImageUrl, cGGNum, cActions, cLanguage) => {
+    return createCard(CardLayoutType.HORIZONTAL, cTitle, cContent, cImageUrl, cGGNum, null, cLanguage, 0, cActions);
+};
+
+let createWallpaperCard = (cContent, cImageUrl, cGGNum, cLink, cLanguage) => {
+    return createCard(CardLayoutType.WALLPAPER, null, cContent, cImageUrl, cGGNum, cLink, cLanguage);
+};
+
+let createGoalIconCard = (cGGNum, cImage, cLink, cLanguage) => {
+    return createCard(CardLayoutType.GOAL_ICON, null, null, cImage, cGGNum, cLink, cLanguage);
+};
+
 /* Card creator */
-let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLanguage, cBadge) => {
+let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLanguage, cBadge, cActions) => {
     let card = document.createElement('div');
     card.setAttribute('class', getCSSCardLayout(cLayoutType, cGGNum, cBadge));
     let content;
     switch(cLayoutType) {
         case CardLayoutType.HORIZONTAL:
         case CardLayoutType.VERTICAL:
-            content = getHorzVertContent(cLayoutType, cTitle, cContent, cImageUrl, cLanguage);
+            content = getHorzVertContent(cLayoutType, cTitle, cContent, cImageUrl, cLanguage, cActions);
             content.forEach(part => {
                 card.appendChild(part);
             });
@@ -95,6 +117,7 @@ let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLang
     return card;
 }
 
+// returns the css string that a gg card needs depending on its layout
 let getCSSCardLayout = (cLayoutType, cGGNum, cBadge) => {
     let classes = 'oui-bubble ';
     classes += `gg-bubble-${CardLayoutType.properties[cLayoutType].css_abbrev}`;
@@ -103,16 +126,23 @@ let getCSSCardLayout = (cLayoutType, cGGNum, cBadge) => {
     return classes;    
 }
 
-let getHorzVertContent = (cLayoutType, cTitle, cContent, cImageUrl) => {
+// creates the content for vertical and horizontal cards
+let getHorzVertContent = (cLayoutType, cTitle, cContent, cImageUrl, cLanguage, cActions) => {
     let content = [];
     let cContentContainer = document.createElement('div');
     cContentContainer.setAttribute('class', `bubble-cont-${CardLayoutType.properties[cLayoutType].css_abbrev}`)
+    //title of the card
     let title = document.createElement('h3');
     title.innerText = cTitle;
+    //content of the card
     let cardContent = document.createElement('span');
     cardContent.innerHTML = cContent;
     cContentContainer.appendChild(title);
     cContentContainer.appendChild(cardContent);
+    if(cActions != null) {
+        cContentContainer.appendChild(getActionsContent(cActions));
+    }
+    //image in the card
     let image = document.createElement('img');
     image.setAttribute('src', cImageUrl);
     image.setAttribute('class', `bubble-img-${CardLayoutType.properties[cLayoutType].css_abbrev}`);
@@ -121,6 +151,7 @@ let getHorzVertContent = (cLayoutType, cTitle, cContent, cImageUrl) => {
     return content;
 }
 
+// creates the content for wallpaper cards
 let getWallpaperContent = (cImageUrl, cLink, cContent) => {
     let content = document.createElement('div');
 
@@ -128,7 +159,7 @@ let getWallpaperContent = (cImageUrl, cLink, cContent) => {
     wallpaper.setAttribute('src', cImageUrl);
     wallpaper.setAttribute('class', 'wallpaper_image');
     
-    if(cLink != null) {
+    if(cLink != null) { //makes the image clickable if a url was specified
         let lwallpaper = document.createElement('a');
         lwallpaper.setAttribute('href', cLink);
         lwallpaper.appendChild(wallpaper);
@@ -137,7 +168,7 @@ let getWallpaperContent = (cImageUrl, cLink, cContent) => {
     else{
         content.appendChild(wallpaper)
     }
-    if(cContent) {
+    if(cContent) { //if there's additional content to add after the image it's created here
         let details = document.createElement('span');
         details.setAttribute('class', 'wallp_details');
         details.innerHTML = cContent;
@@ -147,6 +178,7 @@ let getWallpaperContent = (cImageUrl, cLink, cContent) => {
     return content;
 };
 
+// creates the content of global icon cards (the ones in Goals page)
 let getGoalIconContent = (cIconUrl, cLinkDestination, cLangauge) => {
     let link = document.createElement('a');
     link.setAttribute('href', cLinkDestination);
@@ -156,4 +188,17 @@ let getGoalIconContent = (cIconUrl, cLinkDestination, cLangauge) => {
     return link;
 };
 
+// creates the link-like options or actions present in some cards
+let getActionsContent = (cActions) => {
+    let actions = document.createElement('span');
+    actions.setAttribute('class', 'bubble-actions');
+    cActions.forEach(act => {
+        let action = document.createElement('a');
+        action.setAttribute('class', 'bubble-action');
+        action.innerText = act[0];
+        action.setAttribute('src', act[1]);
+        actions.appendChild(action);        
+    });
+    return actions;
+}
 
