@@ -179,7 +179,7 @@ let getWallpaperContent = (cImageUrl, cLink, cContent) => {
 };
 
 // creates the content of global icon cards (the ones in Goals page)
-let getGoalIconContent = (cIconUrl, cLinkDestination, cLangauge) => {
+let getGoalIconContent = (cIconUrl, cLinkDestination, cLanguage) => {
     let link = document.createElement('a');
     link.setAttribute('href', cLinkDestination);
     let image = document.createElement('img');
