@@ -8,19 +8,26 @@
     <link href="css/gg.css" rel="stylesheet">
     <link rel="stylesheet" href="css/gg-dark.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="css/gg-light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">
-    <link href="css/_template.css" rel="stylesheet"> 
+    <link href="css/_donate.css" rel="stylesheet">
     <script src="js/_gg_ui.js"></script>
     <link rel="shortcut icon" type="image/png" href="images/raster/icn_goals_colored.png"/>
-    <title>Donate</title>
+    <title>Samsung | The Global Goals : Donate</title>
 </head>
 <body>
     <div id="main-shell">
-        <main id="_page_main_container">
+        <main id="_page_main_container" class="header-bg">
             <header id="_page_title">
-                <h1>Donate</h1>
+                <h1 class="half-width">Donate to the Global Goals</h1>
+                <p class="half-width">Donate money earned or donate directly to support the Global Goals.</p>
             </header>
-            <div id="_main_content" class="main-content-layout">
-
+            <div class="_sticky_title">
+                <h2>Donate</h2>
+                <span>
+                    <svg class="_sticky_l_corner" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg" fill="var(--background)"><path d="M13 0C5.993 0 .273 5.556.05 12.5H0V0h13z"/></svg>
+                    <svg class="_sticky_r_corner" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg" fill="var(--background)"><path d="M13 0v13C13 6.722 8.54 1.477 2.619.264L0 0h13z"/></svg>
+                </span>
+            </div>
+            <div id="_main_content">
                 <div class="oui-bubble gg-bubble-vert">
                     <div class="bubble-cont-vert">
                         <h3>Donate directly to the UNDP</h3>
@@ -29,18 +36,19 @@
                     </div>
                     <img src="images/raster/hands-vert.jpg" class="bubble-img-vert">
                 </div>
-                <div class="oui-bubble gg-bubble-horz">
-                    <div class="bubble-cont-horz">
-                        <h3>Everyone's Donation History</h3>
-                        <p>When you see ads from this app, you'll earn money for donations that support the Global Goals, such as fighting to end poverty, reducing social inequality, and tackling climate change.<p>
+                <div class="oui-bubble gg-bubble-vert">
+                    <div class="bubble-cont-vert">
+                        <h3>Donate directly to the UNDP</h3>
+                        <p>Donate to the <a href=# id="undp-link">UNDP</a> to help tackle the root causes of poverty and create a better life for everyone.</p>
+                        <a href="https://give.undp.org/give/120717/#!/donation/checkout">Donate</a>
                     </div>
-                    <img src="images/raster/boy-horz.jpg" class="bubble-img-horz">
+                    <img src="images/raster/hands-vert.jpg" class="bubble-img-vert">
                 </div>
-            </div>   
+            </div>
         </main>
         <img id="main-colorbar" src="images/ui_elements/colorband.svg">
         <nav id="main-menu">
-            <a href="updates.html" class="main-menu-button ">
+            <a href="updates.html" class="main-menu-button">
                 <img src="images/ui_elements/icn_updates.svg" class="menu-icon" alt=""/>  
                 <span>Updates</span>      
             </a>
@@ -49,7 +57,7 @@
                 <span>Goals</span>
             </a>
             <div  class="main-menu-button main-menu-button--active">
-                <img src="images/ui_elements/icn_donate.svg"  class="menu-icon" alt=""/>
+                <img src="images/ui_elements/icn_donate_selected.svg"  class="menu-icon" alt=""/>
                 <span>Donate</span>
             </div>
             <a href="settings.html"  class="main-menu-button">
@@ -58,6 +66,5 @@
             </a>
         </nav>
     </div>
-    
 </body>
 </html>
