@@ -12,7 +12,7 @@ app.listen(port, () => {
 
 app.use(express.static('public'));
 
-app.get('/wallpapers', async (req,res)=>{
+app.get('/wallpaper', async (req,res)=>{
     const agent = new https.Agent({
         rejectUnauthorized: false
       });
@@ -37,8 +37,14 @@ app.get('/wallpapers', async (req,res)=>{
     }) 
  
    const wallpapers_data = await wallpapers_response.json();
+
+   /*Retrieve One Random Wallpaper */
+   /*Filter only wallpapers with quotes */
+   let wallpaperQuotes = wallpapers_data.wallpapers.filter(wallpaper => wallpaper.type == 'QUOTE');
+   /*Get One Random*/
+   let wallpaper = wallpaperQuotes[Math.floor(Math.random() * wallpaperQuotes.length)];
   
-   res.json(wallpapers_data)
+   res.json(wallpaper)
 })
 
 app.get('/corona', async(req,res)=>{

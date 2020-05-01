@@ -1,25 +1,3 @@
-function getWallpapers(wallpapersJson){
-    const arrayWallpapers = wallpapersJson.wallpapers;
-    let wallpaperElement = document.getElementById('wallpaper');
-   
-
-    /*Get Only Quotes and Texts*/
-    let quotesAndTexts = arrayWallpapers.filter(wallpaper => wallpaper.type == 'TEXT' || wallpaper.type == 'QUOTE');
-    /*Get One Random*/
-    let wallpaper = quotesAndTexts[Math.floor(Math.random() * quotesAndTexts.length)];
-    wallpaperElement.className +=' gg-g'+ wallpaper.goalNo;
-
-    let finalTemplate = `${wallpaper.type == 'QUOTE'? 
-                                `<img src= ${wallpaper.assetUrl} alt=${wallpaper.title}>`:
-                                `<p>${wallpaper.data}</p>`}
-                        <p>${wallpaper.credits}</p>
-                        <p>#GlobalGoal${wallpaper.goalNo}</p>
-                        <a href="goal.html?no=${wallpaper.goalNo}" id="link-goal">Learn More</a>`
-
-    return finalTemplate;
-    
-}
-
 window.addEventListener('load', async () => {
     let link = document.getElementById('undp-link');
     let modal = document.getElementsByClassName('modal')[0];
@@ -27,14 +5,13 @@ window.addEventListener('load', async () => {
     let goalDiv = document.getElementsByClassName('goal-img')[0]; 
     let mainContent = document.getElementById('_main_content');
 
-    const wallpapers = await fetch('/wallpapers');
-    const wallpapersJson = await wallpapers.json();
+    const wallpaper = await fetch('/wallpaper');
+    const wallpaperJson = await wallpaper.json();
 
     const coronaCards = await fetch('/corona');
     const coronaJson = await coronaCards.json();
 
-    /*Load Cards*/
-   // createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLanguage, cBadge) => {
+  
 
     const donateCard = createVerticalCard( 'Donate directly to the UNDP',
                                'Donate to the <a href=# id="undp-link">UNDP</a> to help tackle the root causes of poverty and create a better life for everyone.',
@@ -71,22 +48,16 @@ window.addEventListener('load', async () => {
     
     mainContent.appendChild(workCard);
 
-    const wallpaperCard = createCard(CardLayoutType.BLANK,
-                                     null,
-                                     getWallpapers(wallpapersJson),
-                                     null,
-                                     3,
-                                     null,
-                                     null,
-                                     false
-                                     );                                    
+    const wallpaperCard = createWallpaperCard(`<p>${wallpaperJson.credits}</p>
+                                                   <p>#GlobalGoal${wallpaperJson.goalNo}</p>
+                                                   <a href="goal.html?no=${wallpaperJson.goalNo}" id="link-goal">Learn More</a>`,
+                                                   wallpaperJson.assetUrl,
+                                                   wallpaperJson.goalNo
+                                                );                                    
                         
 
     mainContent.appendChild(wallpaperCard);
     
-
-    goalDiv.innerHTML += getWallpapers(wallpapersJson);
-   // loadCard(coronaJson);
 
     let linkGoal = document.querySelector('#link-goal');
 
@@ -94,13 +65,13 @@ window.addEventListener('load', async () => {
         window.document.location = './goal.html';
     }
 
-    link.onclick = function(){
+   /* link.onclick = function(){
         modal.style.display = "block";
     }
 
     close.onclick = function(){
         modal.style.display= "none";
-    }
+    }*/
 
 })
 
