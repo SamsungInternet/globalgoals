@@ -11,6 +11,23 @@ window.addEventListener('load', async () => {
     const coronaCards = await fetch('/corona');
     const coronaJson = await coronaCards.json();
 
+    
+
+    if (coronaJson.type == 'NORMAL'){
+        coronaCard = createVerticalCard(coronaJson.title,
+                          coronaJson.message,
+                          coronaJson.assetUrl,
+                          coronaJson.goalNo,
+                          [[coronaJson.action,coronaJson.actionUrl]]);
+    }else{
+        coronaCard = createHorizontalCard(coronaJson.title,
+            coronaJson.message,
+            coronaJson.assetUrl,
+            coronaJson.goalNo,
+            [[coronaJson.action,coronaJson.actionUrl]]);
+    }
+
+    mainContent.appendChild(coronaCard);
   
 
     const donateCard = createVerticalCard( 'Donate directly to the UNDP',
@@ -30,6 +47,16 @@ window.addEventListener('load', async () => {
     
     mainContent.appendChild(learnCard);
 
+    const wallpaperCard = createWallpaperCard(`<p>${wallpaperJson.credits}</p>
+                                                   <p>#GlobalGoal${wallpaperJson.goalNo}</p>
+                                                   <a href="goal.html?no=${wallpaperJson.goalNo}" id="link-goal">Learn More</a>`,
+                                                   wallpaperJson.assetUrl,
+                                                   wallpaperJson.goalNo
+                                                );                                    
+                        
+
+    mainContent.appendChild(wallpaperCard);
+
     const peopleCard = createHorizontalCard('We the People',
                                             'This star-studded video introduces the new plan for the people and planet: the UN Global Goals for Sustainable Development. Audio is in English.</p>',
                                             '/images/raster/video-horz.jpg',
@@ -46,17 +73,7 @@ window.addEventListener('load', async () => {
                                    null
                                   );
     
-    mainContent.appendChild(workCard);
-
-    const wallpaperCard = createWallpaperCard(`<p>${wallpaperJson.credits}</p>
-                                                   <p>#GlobalGoal${wallpaperJson.goalNo}</p>
-                                                   <a href="goal.html?no=${wallpaperJson.goalNo}" id="link-goal">Learn More</a>`,
-                                                   wallpaperJson.assetUrl,
-                                                   wallpaperJson.goalNo
-                                                );                                    
-                        
-
-    mainContent.appendChild(wallpaperCard);
+    mainContent.appendChild(workCard);    
     
 
     let linkGoal = document.querySelector('#link-goal');
