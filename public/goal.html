@@ -8,7 +8,6 @@
     <link href="css/gg.css" rel="stylesheet">
     <link rel="stylesheet" href="css/gg-dark.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="css/gg-light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">
-    <link href="css/_template.css" rel="stylesheet">
     <script src="js/_gg_ui.js"></script>
     <script src="js/goal.js"></script>
     <script src="assets/posts.js"></script>
@@ -25,30 +24,7 @@
             
             <div class="_sticky_title">Goal</div>
             <div id="_main_content" class="main-content-layout">
-                <div id="_goal_content">
-
-                </div>               
-                <div class="oui-bubble gg-bubble-horz add">
-                    <img src="images/ad.jpg" class="bubble-img-horz">
-                </div>
-                
-
-                <div class="oui-bubble gg-bubble-horz">
-                    <img src="images/raster/boy-horz.jpg" class="bubble-img-horz">
-                    <div class="bubble-cont-horz">
-                        <h3>Ads Raise Money to Help</h3>
-                        <p>When you see ads from this app, you'll earn money for donations that support the Global Goals, such as fighting to end poverty, reducing social inequality, and tackling climate change.<p>
-                    </div>
-                </div>
-
-                <div class="oui-bubble gg-bubble-vert">
-                    <div class="bubble-cont-vert">
-                        <h3>Learn about the Global Goals</h3>
-                        <p>World leaders agreed to 17 goals for a better world by 2030. These goals have the power to change the world and the people in it.</p>
-                        <a href="goals.html">Learn more</a>
-                    </div>
-                    <img src="images/raster/goals-vert.jpg" class="bubble-img-vert">
-                </div>
+                           
                 
             </div>
         </main>
@@ -73,26 +49,6 @@
         </nav>
     </div>
 
-    <!--Templates-->
-    <template id="v-card-template">
-        <div class="oui-bubble gg-bubble-vert">
-            <div class="bubble-cont-vert">
-                <h3><slot name="card-title">Card Title</slot></h3>
-                <p><slot name="card-text">Card text.</slot><p>
-            </div>
-            <slot name="card-image">img src="image/path.jpg" with class="bubble-img-horz"</slot>
-        </div>
-    </template>
-
-    <template id="h-card-template">
-        <div class="oui-bubble gg-bubble-horz">
-            <div class="bubble-cont-horz">
-                <h3><slot name="card-title">Card Title</slot></h3>
-                <p><slot name="card-text">Card text.</slot><p>
-            </div>
-            <slot name="card-image">img src="image/path.jpg" with class="bubble-img-horz"</slot>
-        </div>
-    </template>
     
 </body>
 </html>
