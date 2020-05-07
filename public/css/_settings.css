@@ -18,6 +18,23 @@
     margin-bottom: 20px;
 }
 
+.oui-button{
+    background-color: transparent;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings > a{
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
 .text-left{
     text-align: left !important;
 }
@@ -38,4 +55,11 @@
         width: 500px;
         margin: 0 auto;
     }
+ }
+
+ hr{
+    display: block;
+    width: 50%;
+    color: black;
+    opacity: 0.1;
  }
