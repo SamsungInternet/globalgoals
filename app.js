@@ -5,6 +5,7 @@ const app = express();
 require('dotenv').config();
 
 const port = process.env.PORT || 3000;
+const url = process.env.URL;
 
 app.listen(port, () => {
   console.log(`Starting server at ${port}`);
@@ -28,8 +29,7 @@ app.get('/wallpaper', async (req,res)=>{
         "country":"UK"
       };
 
-
-    const wallpapers_response = await fetch('https://dev.samsungglobalgoals.com/api/v3/wallpapers/', {
+    const wallpapers_response = await fetch(url+'/api/v3/wallpapers/', {
         agent,
         method: 'post',
         body:    JSON.stringify(body),
@@ -64,7 +64,7 @@ app.get('/corona', async(req,res)=>{
       "salesCode" : ""
   }
 
-  const post_response = await fetch('https://dev.samsungglobalgoals.com/api/v3/posts/', {
+  const post_response = await fetch(url+'/api/v3/posts/', {
         agent,
         method: 'post',
         body:    JSON.stringify(body),
