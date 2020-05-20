@@ -98,7 +98,8 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     align-items: stretch;
     justify-content: flex-start;
-    align-content:space-around;
+    align-content:flex-start;
+    height: 100%;
 }
 
 h1 {
