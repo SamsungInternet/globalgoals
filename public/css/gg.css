@@ -99,7 +99,6 @@ main {
     align-items: stretch;
     justify-content: flex-start;
     align-content:flex-start;
-    height: 100%;
 }
 
 h1 {
@@ -219,7 +218,6 @@ a:link, a:active, a:visited {
 
 .gg-bubble-blank {
     overflow: hidden;
-    width: 100%;
 }
 
 .gg-bubble-badge {
@@ -252,6 +250,12 @@ a:link, a:active, a:visited {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.vert-horz-trans-img {
+    padding: 1.5rem;
+    object-fit: contain;
+    max-height: 10rem;
 }
 
 .bubble-cont-vert {

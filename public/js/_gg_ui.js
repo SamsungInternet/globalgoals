@@ -92,7 +92,7 @@ let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLang
     switch(cLayoutType) {
         case CardLayoutType.HORIZONTAL:
         case CardLayoutType.VERTICAL:
-            content = getHorzVertContent(cLayoutType, cTitle, cContent, cImageUrl, cLanguage, cActions);
+            content = getHorzVertContent(cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLanguage, cActions);
             content.forEach(part => {
                 card.appendChild(part);
             });
@@ -121,13 +121,13 @@ let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLang
 let getCSSCardLayout = (cLayoutType, cGGNum, cBadge) => {
     let classes = 'oui-bubble ';
     classes += `gg-bubble-${CardLayoutType.properties[cLayoutType].css_abbrev}`;
-    if(cGGNum != null && ! cBadge)
+    if(cGGNum != null && ! cBadge && cLayoutType != CardLayoutType.HORIZONTAL && cLayoutType != CardLayoutType.VERTICAL)
             classes += ` gg-g${cGGNum}`;
     return classes;    
 }
 
 // creates the content for vertical and horizontal cards
-let getHorzVertContent = (cLayoutType, cTitle, cContent, cImageUrl, cLanguage, cActions) => {
+let getHorzVertContent = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLanguage, cActions) => {
     let content = [];
     let cContentContainer = document.createElement('div');
     cContentContainer.setAttribute('class', `bubble-cont-${CardLayoutType.properties[cLayoutType].css_abbrev}`)
@@ -145,7 +145,11 @@ let getHorzVertContent = (cLayoutType, cTitle, cContent, cImageUrl, cLanguage, c
     //image in the card
     let image = document.createElement('img');
     image.setAttribute('src', cImageUrl);
-    image.setAttribute('class', `bubble-img-${CardLayoutType.properties[cLayoutType].css_abbrev}`);
+    let imgClass = `bubble-img-${CardLayoutType.properties[cLayoutType].css_abbrev} `;
+    if(cGGNum != 0 && cGGNum != null) { // set the appropriate css classes to the images based on parameters
+        imgClass += ` gg-g${cGGNum} vert-horz-trans-img`;
+    }
+    image.setAttribute('class', imgClass);
     content.push(image);
     content.push(cContentContainer);
     return content;
