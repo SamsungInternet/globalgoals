@@ -1,0 +1,15 @@
+:root {
+
+    /*text realted sizes*/
+    font-size: 100%;
+    line-height: initial;
+
+    /*UI ELEMENTS*/
+
+    --page-descrip-space: 60%; /*amount the description under the titles expand*/
+
+    /*CARDS*/
+    --card-margin: .5rem;
+    --card-padding: 1.2rem;
+
+}

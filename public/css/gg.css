@@ -1,4 +1,5 @@
 @import '_fonts.css';
+@import 'gg_sizing.css';
 
 :root {
     /*Goals palette*/
@@ -95,8 +96,9 @@ main {
     padding-bottom: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
-    justify-items: start;
+    align-items: stretch;
+    justify-content: flex-start;
+    align-content:space-around;
 }
 
 h1 {
@@ -173,7 +175,7 @@ a:link, a:active, a:visited {
 }
 
 .half-width {
-    width: 60%;
+    width: var(--page-descrip-space);
 }
 
 #_page_main_container {
@@ -196,27 +198,21 @@ a:link, a:active, a:visited {
     justify-content: space-around;
 }
 
+.oui-bubble {
+    margin: var(--card-margin);
+}
+
 /*Horizontal and Vertical card styles*/
 .gg-bubble-vert {
-    width: 100%;
     display: grid;
     grid-template-columns: 2fr 1fr;
     padding: 0px;
     overflow: hidden;
-    margin-bottom: 1em;
 }
 .gg-bubble-horz {
-    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 0px;
-    overflow: hidden;
-    margin-bottom: 1em;
-}
-
-.gg-bubble-wallp {
-    padding: 0px;
-    width: 100%;
     overflow: hidden;
 }
 
@@ -269,8 +265,6 @@ a:link, a:active, a:visited {
 
 .gg-bubble-wallp {
     color: rgba(255,255,255, .9);
-    width: 100%;
-    margin: auto;
     padding: 1rem;
     object-fit: cover;
 }
