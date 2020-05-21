@@ -93,12 +93,13 @@ main {
 }
 
 .main-content-layout {
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     align-items: stretch;
-    justify-content: flex-start;
-    align-content:flex-start;
+    justify-content: stretch;
+    align-content: stretch;
+    grid-gap: 1rem;
 }
 
 h1 {
@@ -149,14 +150,14 @@ a:link, a:active, a:visited {
     height: 26px;
     position: absolute;
     left:0px;
-    top: 42px;
+    top: 47px;
 }
 
 ._sticky_r_corner {
     height: 26px;
     position: absolute;
     right: 0px;
-    top: 42px;
+    top: 47px;
 }
 
 @keyframes _sticky_opacity_on {
@@ -183,6 +184,8 @@ a:link, a:active, a:visited {
     flex-direction: column;
     width: 100%;
     justify-content: flex-start;
+    justify-items: stretch;
+    align-items: stretch;
 }
 
 .goal_icon_header {
@@ -199,7 +202,8 @@ a:link, a:active, a:visited {
 }
 
 .oui-bubble {
-    margin: var(--card-margin);
+    /* margin: var(--card-margin); */
+   height: 100%;
 }
 
 /*Horizontal and Vertical card styles*/
