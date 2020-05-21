@@ -8,6 +8,7 @@ var urlsToCache = [
     'images/raster/goals-vert.jpg',
     'images/raster/video-horz.jpg',
     'images/raster/boy-horz.jpg',
+    'images/raster/goals_header.jpg',
     'assets/goalsDetail.js',
     'js/_gg_ui.js',
 ];
@@ -31,8 +32,12 @@ self.addEventListener('fetch', function(event) {
         if (response) {
           return response;
         }
-        return fetch(event.request);
+        return fetch(event.request)
+        .catch(error => {
+           return caches.match('images/raster/goals_header.jpg');
+        })
       }
+     
     )
   );
 });
