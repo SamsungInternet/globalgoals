@@ -203,7 +203,7 @@ let getActionsContent = (cActions) => {
         let action = document.createElement('a');
         action.setAttribute('class', 'bubble-action');
         action.innerText = act[0];
-        action.setAttribute('src', act[1]);
+        action.setAttribute('href', act[1]);
         actions.appendChild(action);        
     });
     return actions;
