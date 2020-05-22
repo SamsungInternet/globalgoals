@@ -111,7 +111,7 @@ let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLang
             }
             break;
         case CardLayoutType.GOAL_ICON:
-            card.appendChild(getGoalIconContent(cImageUrl, cLink, cLanguage));
+            card.appendChild(getGoalIconContent(cImageUrl, cGGNum, cLink, cLanguage));
         break;
     }
     return card;
@@ -145,6 +145,7 @@ let getHorzVertContent = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLan
     //image in the card
     let image = document.createElement('img');
     image.setAttribute('src', cImageUrl);
+    image.setAttribute('alt',cTitle);
     let imgClass = `bubble-img-${CardLayoutType.properties[cLayoutType].css_abbrev} `;
     if(cGGNum != 0 && cGGNum != null) { // set the appropriate css classes to the images based on parameters
         imgClass += ` gg-g${cGGNum} vert-horz-trans-img`;
@@ -162,6 +163,7 @@ let getWallpaperContent = (cImageUrl, cLink, cContent) => {
     let wallpaper = document.createElement('img');
     wallpaper.setAttribute('src', cImageUrl);
     wallpaper.setAttribute('class', 'wallpaper_image');
+    wallpaper.setAttribute('alt', 'wallpaper quote');
     
     if(cLink != null) { //makes the image clickable if a url was specified
         let lwallpaper = document.createElement('a');
@@ -183,11 +185,12 @@ let getWallpaperContent = (cImageUrl, cLink, cContent) => {
 };
 
 // creates the content of global icon cards (the ones in Goals page)
-let getGoalIconContent = (cIconUrl, cLinkDestination, cLanguage) => {
+let getGoalIconContent = (cIconUrl, cGGNum, cLinkDestination, cLanguage) => {
     let link = document.createElement('a');
     link.setAttribute('href', cLinkDestination);
     let image = document.createElement('img');
     image.setAttribute('src', cIconUrl);
+    image.setAttribute('alt',`goal ${cGGNum} icon`);
     link.appendChild(image);
     return link;
 };
