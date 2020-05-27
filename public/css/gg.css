@@ -106,7 +106,6 @@ main {
 h1 {
     font-family: SamsungSharpSans-Bold;
     font-size: 1.3rem;
-    color: white;
 }
 
 h2 {
@@ -205,6 +204,7 @@ a:link, a:active, a:visited {
 .oui-bubble {
     /* margin: var(--card-margin); */
    height: 100%;
+   padding: 2em 1.5em;
 }
 
 /*Horizontal and Vertical card styles*/
@@ -226,6 +226,7 @@ a:link, a:active, a:visited {
 }
 
 .gg-bubble-badge {
+    color: white;
 	content: " ";
 	position: absolute;
     left: 1.1rem;
