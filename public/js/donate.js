@@ -20,7 +20,7 @@ let createDonationChart = (data) => {
         let line = `<div class="donation-chart-line">
         <img src="images/gg-tile/en/gg-${ggnum+1}.svg" class="donation-chart-icon gg-g${ggnum+1}">
         <span class="donation-chart-bar gg-g${ggnum+1}" style="width:${(data[ggnum]/total*100)}%"></span>
-        <p class="donation-chart-text">${(data[ggnum]/total*100).toFixed(1)}</p>
+        <p class="donation-chart-text">${(data[ggnum]/total*100).toFixed(1)}%</p>
     </div>`;
     chart.innerHTML += line;
     }
