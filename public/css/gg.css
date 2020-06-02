@@ -187,6 +187,7 @@ a:link, a:active, a:visited {
     justify-content: stretch;
     justify-items: stretch;
     align-items: stretch;
+    overflow:auto;
 }
 
 .goal_icon_header {
