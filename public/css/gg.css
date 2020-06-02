@@ -61,6 +61,7 @@ html, body {
 
 #main-colorbar {
     width: 100vw;
+    object-fit: fill;
     height: .7rem;
     grid-column: 1 / 2;
     grid-template: 2 / 3;
