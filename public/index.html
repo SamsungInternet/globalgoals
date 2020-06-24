@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="/css/gg-light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">
     <link href="/css/_updates.css" rel="stylesheet">
     <script src="/js/updates.js"></script>
-    <script src="/js/_gg_ui.js"></script>  
+    <script src="/js/_gg_ui.js"></script> 
+    <script defer src="/__/firebase/7.15.2/firebase-app.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script> 
     <link rel="manifest" href="/appmanifest.webmanifest">  
     <link rel="shortcut icon" type="image/png" href="/images/raster/icn_goals_colored.png"/>
     <title>Samsung | The Global Goals : Updates</title>
@@ -55,6 +58,7 @@
         </nav>
     </div>
     <script>
+        
       if ("serviceWorker" in navigator) {
         if (navigator.serviceWorker.controller) {
             console.log("Active Service Worker Found.");
@@ -69,7 +73,7 @@
             });
         }
         }
-
+     
 
     </script>
 </body>
