@@ -1,17 +1,19 @@
-window.addEventListener('load', async () => {
+const fetchPromise = Promise.all([
+    fetch('/wallpaper').then(wallpaper => wallpaper.json()),
+    fetch('/corona').then(corona => corona.json())
+]);
+
+window.addEventListener('DOMContentLoaded', async function updates() {
+    const [
+        wallpaperJson,
+        coronaJson
+    ] = await fetchPromise;
+
     let link = document.getElementById('undp-link');
     let modal = document.getElementsByClassName('modal')[0];
     let close = document.getElementsByClassName('close')[0];
     let goalDiv = document.getElementsByClassName('goal-img')[0]; 
     let mainContent = document.getElementById('_main_content');
-
-    const wallpaper = await fetch('/wallpaper');
-    const wallpaperJson = await wallpaper.json();
-
-    const coronaCards = await fetch('/corona');
-    const coronaJson = await coronaCards.json();
-
-    
 
     if (coronaJson.type == 'NORMAL'){
         coronaCard = createVerticalCard(coronaJson.title,
@@ -60,4 +62,3 @@ window.addEventListener('load', async () => {
     }*/
 
 })
-
