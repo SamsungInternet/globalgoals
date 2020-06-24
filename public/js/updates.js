@@ -61,4 +61,4 @@ window.addEventListener('DOMContentLoaded', async function updates() {
         modal.style.display= "none";
     }*/
 
-}())
+})
