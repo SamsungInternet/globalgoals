@@ -61,6 +61,7 @@ html, body {
 
 #main-colorbar {
     width: 100vw;
+    object-fit: fill;
     height: .7rem;
     grid-column: 1 / 2;
     grid-template: 2 / 3;
@@ -88,7 +89,7 @@ main {
 }
 
 #_main_content {
-    width: 80vw;
+    width: 85vw;
     margin: auto;
 }
 
@@ -186,6 +187,7 @@ a:link, a:active, a:visited {
     justify-content: stretch;
     justify-items: stretch;
     align-items: stretch;
+    overflow:auto;
 }
 
 .goal_icon_header {
@@ -204,7 +206,7 @@ a:link, a:active, a:visited {
 .oui-bubble {
     /* margin: var(--card-margin); */
    height: 100%;
-   padding: 2em 1.5em;
+   padding: var(--card-padding);
 }
 
 /*Horizontal and Vertical card styles*/

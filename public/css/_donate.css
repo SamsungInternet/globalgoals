@@ -5,3 +5,48 @@
     background-repeat: no-repeat;
     background-size: 100vw;
 }
+
+.oui-bubble-donation-chart {
+    padding: 0px;
+}
+
+.donation-chart-header {
+    padding: var(--card-padding);
+    padding-bottom: 0px;
+}
+
+.donation-chart-bubble {
+    padding: 0rem;
+}
+
+.donation-chart {
+    display: grid;
+    grid-template: repeat(18, 1fr) / 1fr;
+    grid-gap: 10px;
+}
+
+.donation-chart-line {
+    display: flex;
+    flex-flow: row nowrap;
+    padding-left: calc(var(--card-padding) * -1);
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.donation-chart-icon {
+    width: 6rem;
+    height: 6rem;
+}
+
+.donation-chart-bar {
+    height: 100%;
+    min-width: .6rem;
+    border-left: solid 5px var(--surface-background);
+    border-radius: 0px 13px 13px 0px;
+}
+
+.donation-chart-text {
+    grid-row: 1;
+    grid-column: 3;
+    padding-left: .5rem;
+}
