@@ -1,15 +1,17 @@
+const functions = require('firebase-functions');
+
 const express = require('express');
 const fetch = require('node-fetch');
 const https = require('https');
 const app = express();
 require('dotenv').config();
 
-const port = process.env.PORT || 3000;
+//const port = process.env.PORT || 8080;
 const url = process.env.URL;
 
-app.listen(port, () => {
+/*app.listen(port, () => {
   console.log(`Starting server at ${port}`);
-});
+});*/
 
 app.use(express.static('public'));
 
@@ -29,23 +31,29 @@ app.get('/wallpaper', async (req,res)=>{
         "country":"UK"
       };
 
-    const wallpapers_response = await fetch(url+'/api/v3/wallpapers/', {
-        agent,
-        method: 'post',
-        body:    JSON.stringify(body),
-        headers: { 'Content-Type': 'application/json' },
 
-    }) 
- 
-   const wallpapers_data = await wallpapers_response.json();
 
-   /*Retrieve One Random Wallpaper */
-   /*Filter only wallpapers with quotes */
-   let wallpaperQuotes = wallpapers_data.wallpapers.filter(wallpaper => wallpaper.type == 'QUOTE');
-   /*Get One Random*/
-   let wallpaper = wallpaperQuotes[Math.floor(Math.random() * wallpaperQuotes.length)];
-  
-   res.json(wallpaper)
+    
+        const wallpapers_response = await fetch(url+'/api/v3/wallpapers/', {
+            agent,
+            method: 'post',
+            body:    JSON.stringify(body),
+            headers: { 'Content-Type': 'application/json' },
+
+        }) 
+    
+        const wallpapers_data = await wallpapers_response.json();
+
+        /*Retrieve One Random Wallpaper */
+        /*Filter only wallpapers with quotes */
+        let wallpaperQuotes = wallpapers_data.wallpapers.filter(wallpaper => wallpaper.type == 'QUOTE');
+        /*Get One Random*/
+        let wallpaper = wallpaperQuotes[Math.floor(Math.random() * wallpaperQuotes.length)];
+        
+        res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+        res.json(wallpaper)
+    
+   
 })
 
 app.get('/corona', async(req,res)=>{
@@ -80,7 +88,10 @@ app.get('/corona', async(req,res)=>{
   
    let coronaCard  = coronaCards[Math.floor(Math.random() * coronaCards.length)];
 
+   res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
    res.json(coronaCard);
     
   
 })
+
+exports.app = functions.https.onRequest(app);

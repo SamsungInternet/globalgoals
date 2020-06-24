@@ -5,8 +5,10 @@ window.addEventListener('load', async () => {
     let goalDiv = document.getElementsByClassName('goal-img')[0]; 
     let mainContent = document.getElementById('_main_content');
 
+    
     const wallpaper = await fetch('/wallpaper');
     const wallpaperJson = await wallpaper.json();
+   
 
     const coronaCards = await fetch('/corona');
     const coronaJson = await coronaCards.json();
