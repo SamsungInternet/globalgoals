@@ -2,16 +2,15 @@ async function loadDynamicCards(){
 
     let mainContent = document.getElementById('_main_content');
     
-    try {
-        const wallpaper =  fetch('/wallpaper');   
-        const coronaCards = fetch('/corona');
-
-        const wallpaperJson = await wallpaper.json();    
+    
+        const wallpaper =  await fetch('/wallpaper'); 
+        const wallpaperJson = await wallpaper.json(); 
+        const coronaCards = await fetch('/corona');
         const coronaJson = await coronaCards.json();
 
         
 
-        if (coronaJson.type == 'NORMAL'){
+       if (coronaJson.type == 'NORMAL'){
             coronaCard = createVerticalCard(coronaJson.title,
                             coronaJson.message,
                             coronaJson.assetUrl,
@@ -41,10 +40,7 @@ async function loadDynamicCards(){
                 window.document.location = './goal.html';
          }                                             
                                                   
-    }catch(error){
-        console.log(error);
-    }   
-
+    
                                                                                                          
                         
  
