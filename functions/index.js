@@ -6,7 +6,7 @@ const https = require('https');
 const app = express();
 require('dotenv').config();
 
-const url = process.env.URL;
+const url = process.env.DEV_URL;
 
 app.use(express.static('public'));
 
@@ -29,7 +29,7 @@ app.get('/wallpaper', async (req,res)=>{
 
 
     
-        const wallpapers_response = await fetch(url+'/api_pwa/v1/wallpapers/', {
+        const wallpapers_response = await fetch(url+'/wallpapers/', {
             agent,
             method: 'post',
             body:    JSON.stringify(body),
@@ -67,7 +67,7 @@ app.get('/corona', async(req,res)=>{
       "salesCode" : ""
   }
 
-  const post_response = await fetch(url+'/api_pwa/v1/posts/', {
+  const post_response = await fetch(url+'/posts/', {
         agent,
         method: 'post',
         body:    JSON.stringify(body),
