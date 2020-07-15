@@ -1,9 +1,4 @@
-window.addEventListener('load', () => {
-    //adds the default donate card
-    let mc = document.getElementById('_main_content');
-    let defaultDonateCard = createVerticalCard('Donate directly to the UNDP', 'Donate to the UNDP to help tackle the root causes of poverty and create a better life for everyone.', '/images/raster/donate_vert.jpg', 0, [['Donate', '#']]); 
-    mc.appendChild(defaultDonateCard);
-});
+
 
 //creates the donation history UI chart 
 let createDonationChart = (data) => {
@@ -26,3 +21,24 @@ let createDonationChart = (data) => {
     }
     return chart;
 };
+
+async function loadDonationsCard(){
+    try{
+        const donations = await fetch('/globalDonations');
+        const donationsJson = await donations.json();
+        console.log(donationsJson.donations);
+        let donationChart = createDonationChart(donationsJson.donations);
+        document.getElementById('_main_content').appendChild(donationChart);
+    }catch(error){
+        console.log(error);
+    }
+}
+
+window.addEventListener('load', () => {
+    //adds the default donate card
+    let mc = document.getElementById('_main_content');
+    let defaultDonateCard = createVerticalCard('Donate directly to the UNDP', 'Donate to the UNDP to help tackle the root causes of poverty and create a better life for everyone.', '/images/raster/donate_vert.jpg', 0, [['Donate', '#']]); 
+    mc.appendChild(defaultDonateCard);
+});
+
+loadDonationsCard();
