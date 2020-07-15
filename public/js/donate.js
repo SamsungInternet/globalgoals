@@ -26,7 +26,6 @@ async function loadDonationsCard(){
     try{
         const donations = await fetch('/globalDonations');
         const donationsJson = await donations.json();
-        console.log(donationsJson.donations);
         let donationChart = createDonationChart(donationsJson.donations);
         document.getElementById('_main_content').appendChild(donationChart);
     }catch(error){

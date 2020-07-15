@@ -89,4 +89,35 @@ app.get('/corona', async(req,res)=>{
   
 })
 
+app.get('/globalDonations', async(req,res)=>{
+  const agent = new https.Agent({
+    rejectUnauthorized: false
+  });
+
+  const body = 
+    {
+      "key": process.env.API_KEY,
+      "uid": process.env.UID,
+      "country": "UK",
+      "language": ["en-EN"],
+      "deviceModel" : "Samsung",
+      "clientVersion" : "1.0",
+      "salesCode" : ""
+  }
+
+  const donations_response = await fetch(url+'/getGlobalDonations/', {
+        agent,
+        method: 'post',
+        body:    JSON.stringify(body),
+        headers: { 'Content-Type': 'application/json' },
+    }) 
+ 
+   const donations_data = await donations_response.json();
+
+   res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+   res.json(donations_data);
+    
+  
+})
+
 exports.app = functions.https.onRequest(app);
