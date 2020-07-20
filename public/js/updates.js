@@ -1,4 +1,63 @@
-async function loadDynamicCards(){
+function getNewsCards(posts){
+
+  
+    let articles = posts.filter(post => post.batch == 'undp_article');
+        /*Get One Random*/
+    let article = articles[Math.floor(Math.random() * articles.length)];
+
+    
+    if (article.type == 'NORMAL'){
+        articleCard = createVerticalCard(article.title,
+                        article.message,
+                        article.assetUrl,
+                        article.goalNo,
+                        [[article.action,article.actionUrl]]);
+    }else{
+        articleCard = createHorizontalCard(article.title,
+            article.message,
+            article.assetUrl,
+            article.goalNo,
+            [[article.action,article.actionUrl]]);
+    } 
+
+    return articleCard;
+        
+}
+
+function getVideoCards(posts){
+    let videos = posts.filter(post => post.batch == 'undp_video');
+    /*Get One Random*/
+    let video = videos[Math.floor(Math.random() * videos.length)];
+
+
+    if (video.type == 'NORMAL'){
+        videoCard = createVerticalCard(video.title,
+                        video.message,
+                        video.assetUrl,
+                        video.goalNo,
+                        [[video.action,video.actionUrl]]);
+    }else{
+        videoCard = createHorizontalCard(video.title,
+            video.message,
+            video.assetUrl,
+            video.goalNo,
+            [[video.action,video.actionUrl]]);
+    } 
+
+    return videoCard;
+
+}
+
+function getEcommerceCards(postsJson){
+
+}
+
+function getPodcastCards(postsJson){
+
+}
+
+
+async function loadDynamicCards(postsData){
 
     
     
@@ -9,6 +68,13 @@ async function loadDynamicCards(){
 
         const coronaCards = await fetch('/corona');          
         const coronaJson = await coronaCards.json();
+
+        const posts = await fetch('/posts');
+        const postJson = await posts.json();
+
+        const newsCard = getNewsCards(postJson.posts);
+        
+
 
         
 
@@ -38,6 +104,7 @@ async function loadDynamicCards(){
 
         mainContent.appendChild(coronaCard);                                            
         mainContent.appendChild(wallpaperCard);
+        mainContent.appendChild(newsCard);
         
         let linkGoal = document.querySelector('#link-goal');
 
