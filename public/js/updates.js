@@ -1,102 +1,28 @@
-function getNewsCards(posts){
+function getPostsCards(posts, type){
 
   
-    let articles = posts.filter(post => post.batch == 'undp_article');
+    let cards = posts.filter(post => post.batch == type);
         /*Get One Random*/
-    let article = articles[Math.floor(Math.random() * articles.length)];
-
-    
-    if (article.type == 'NORMAL'){
-        articleCard = createVerticalCard(article.title,
-                        article.message,
-                        article.assetUrl,
-                        article.goalNo,
-                        [[article.action,article.actionUrl]]);
-    }else{
-        articleCard = createHorizontalCard(article.title,
-            article.message,
-            article.assetUrl,
-            article.goalNo,
-            [[article.action,article.actionUrl]]);
-    } 
-
-    return articleCard;
-        
-}
-
-function getVideoCards(posts){
-    let videos = posts.filter(post => post.batch == 'undp_video');
-    /*Get One Random*/
-    let video = videos[Math.floor(Math.random() * videos.length)];
-
-
-    if (video.type == 'NORMAL'){
-        videoCard = createVerticalCard(video.title,
-                        video.message,
-                        video.assetUrl,
-                        video.goalNo,
-                        [[video.action,video.actionUrl]]);
-    }else{
-        videoCard = createHorizontalCard(video.title,
-            video.message,
-            video.assetUrl,
-            video.goalNo,
-            [[video.action,video.actionUrl]]);
-    } 
-
-    return videoCard;
-
-}
-
-function getEcommerceCards(posts){
-    let cards = posts.filter(post => post.batch == 'undp_ecommerce');
-    /*Get One Random*/
     let card = cards[Math.floor(Math.random() * cards.length)];
 
-
+    
     if (card.type == 'NORMAL'){
-        ecommerceCard = createVerticalCard(card.title,
+        postCard = createVerticalCard(card.title,
                         card.message,
                         card.assetUrl,
                         card.goalNo,
                         [[card.action,card.actionUrl]]);
     }else{
-        ecommerceCard = createHorizontalCard(card.title,
+        postCard = createHorizontalCard(card.title,
             card.message,
             card.assetUrl,
             card.goalNo,
             [[card.action,card.actionUrl]]);
     } 
 
-    return ecommerceCard;
-
-
+    return postCard;
+        
 }
-
-function getPodcastCards(posts){
-    let podcasts = posts.filter(post => post.batch == 'undp_goalcast');
-    /*Get One Random*/
-    let podcast = podcasts[Math.floor(Math.random() * podcasts.length)];
-
-
-    if (podcast.type == 'NORMAL'){
-        podcastCard = createVerticalCard(podcast.title,
-                        podcast.message,
-                        podcast.assetUrl,
-                        podcast.goalNo,
-                        [[podcast.action,podcast.actionUrl]]);
-    }else{
-        podcastCard = createHorizontalCard(podcast.title,
-            podcast.message,
-            podcast.assetUrl,
-            podcast.goalNo,
-            [[podcast.action,podcast.actionUrl]]);
-    } 
-
-    return podcastCard;
-
-}
-
 
 async function loadDynamicCards(postsData){
 
@@ -113,10 +39,10 @@ async function loadDynamicCards(postsData){
         const posts = await fetch('/posts');
         const postJson = await posts.json();
 
-        const newsCard = getNewsCards(postJson.posts);
-        const videoCard = getVideoCards(postJson.posts);
-        const ecommerceCard = getEcommerceCards(postJson.posts);
-        const podcastCard = getPodcastCards(postJson.posts);
+        const newsCard = getPostsCards(postJson.posts, 'undp_article');
+        const videoCard = getPostsCards(postJson.posts, 'undp_video');
+        const ecommerceCard = getPostsCards(postJson.posts, 'undp_ecommerce');
+        const podcastCard = getPostsCards(postJson.posts, 'undp_goalcast');
         
 
 
