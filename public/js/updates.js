@@ -73,7 +73,27 @@ function getEcommerceCards(posts){
 
 }
 
-function getPodcastCards(postsJson){
+function getPodcastCards(posts){
+    let podcasts = posts.filter(post => post.batch == 'undp_goalcast');
+    /*Get One Random*/
+    let podcast = podcasts[Math.floor(Math.random() * podcasts.length)];
+
+
+    if (podcast.type == 'NORMAL'){
+        podcastCard = createVerticalCard(podcast.title,
+                        podcast.message,
+                        podcast.assetUrl,
+                        podcast.goalNo,
+                        [[podcast.action,podcast.actionUrl]]);
+    }else{
+        podcastCard = createHorizontalCard(podcast.title,
+            podcast.message,
+            podcast.assetUrl,
+            podcast.goalNo,
+            [[podcast.action,podcast.actionUrl]]);
+    } 
+
+    return podcastCard;
 
 }
 
@@ -96,6 +116,7 @@ async function loadDynamicCards(postsData){
         const newsCard = getNewsCards(postJson.posts);
         const videoCard = getVideoCards(postJson.posts);
         const ecommerceCard = getEcommerceCards(postJson.posts);
+        const podcastCard = getPodcastCards(postJson.posts);
         
 
 
@@ -130,6 +151,7 @@ async function loadDynamicCards(postsData){
         mainContent.appendChild(newsCard);
         mainContent.appendChild(videoCard);
         mainContent.appendChild(ecommerceCard);
+        mainContent.appendChild(podcastCard);
         
         let linkGoal = document.querySelector('#link-goal');
 
