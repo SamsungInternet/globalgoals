@@ -48,7 +48,28 @@ function getVideoCards(posts){
 
 }
 
-function getEcommerceCards(postsJson){
+function getEcommerceCards(posts){
+    let cards = posts.filter(post => post.batch == 'undp_ecommerce');
+    /*Get One Random*/
+    let card = cards[Math.floor(Math.random() * cards.length)];
+
+
+    if (card.type == 'NORMAL'){
+        ecommerceCard = createVerticalCard(card.title,
+                        card.message,
+                        card.assetUrl,
+                        card.goalNo,
+                        [[card.action,card.actionUrl]]);
+    }else{
+        ecommerceCard = createHorizontalCard(card.title,
+            card.message,
+            card.assetUrl,
+            card.goalNo,
+            [[card.action,card.actionUrl]]);
+    } 
+
+    return ecommerceCard;
+
 
 }
 
@@ -73,6 +94,8 @@ async function loadDynamicCards(postsData){
         const postJson = await posts.json();
 
         const newsCard = getNewsCards(postJson.posts);
+        const videoCard = getVideoCards(postJson.posts);
+        const ecommerceCard = getEcommerceCards(postJson.posts);
         
 
 
@@ -105,6 +128,8 @@ async function loadDynamicCards(postsData){
         mainContent.appendChild(coronaCard);                                            
         mainContent.appendChild(wallpaperCard);
         mainContent.appendChild(newsCard);
+        mainContent.appendChild(videoCard);
+        mainContent.appendChild(ecommerceCard);
         
         let linkGoal = document.querySelector('#link-goal');
 
