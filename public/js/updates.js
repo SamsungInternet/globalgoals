@@ -1,4 +1,30 @@
-async function loadDynamicCards(){
+function getPostsCards(posts, type){
+
+  
+    let cards = posts.filter(post => post.batch == type);
+        /*Get One Random*/
+    let card = cards[Math.floor(Math.random() * cards.length)];
+
+    
+    if (card.type == 'NORMAL'){
+        postCard = createVerticalCard(card.title,
+                        card.message,
+                        card.assetUrl,
+                        card.goalNo,
+                        [[card.action,card.actionUrl]]);
+    }else{
+        postCard = createHorizontalCard(card.title,
+            card.message,
+            card.assetUrl,
+            card.goalNo,
+            [[card.action,card.actionUrl]]);
+    } 
+
+    return postCard;
+        
+}
+
+async function loadDynamicCards(postsData){
 
     
     
@@ -9,6 +35,16 @@ async function loadDynamicCards(){
 
         const coronaCards = await fetch('/corona');          
         const coronaJson = await coronaCards.json();
+
+        const posts = await fetch('/posts');
+        const postJson = await posts.json();
+
+        const newsCard = getPostsCards(postJson.posts, 'undp_article');
+        const videoCard = getPostsCards(postJson.posts, 'undp_video');
+        const ecommerceCard = getPostsCards(postJson.posts, 'undp_ecommerce');
+        const podcastCard = getPostsCards(postJson.posts, 'undp_goalcast');
+        
+
 
         
 
@@ -38,6 +74,10 @@ async function loadDynamicCards(){
 
         mainContent.appendChild(coronaCard);                                            
         mainContent.appendChild(wallpaperCard);
+        mainContent.appendChild(newsCard);
+        mainContent.appendChild(videoCard);
+        mainContent.appendChild(ecommerceCard);
+        mainContent.appendChild(podcastCard);
         
         let linkGoal = document.querySelector('#link-goal');
 
