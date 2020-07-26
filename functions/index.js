@@ -51,7 +51,7 @@ app.get('/wallpaper', async (req,res)=>{
    
 })
 
-app.get('/corona', async(req,res)=>{
+app.get('/posts', async(req,res)=>{
   const agent = new https.Agent({
     rejectUnauthorized: false
   });
@@ -67,27 +67,21 @@ app.get('/corona', async(req,res)=>{
       "salesCode" : ""
   }
 
-  const post_response = await fetch(url+'/posts/', {
+  const posts_response = await fetch(url+'/posts/', {
         agent,
         method: 'post',
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
-
     }) 
  
-   const post_data = await post_response.json();
-
-   
-   /*Filter corona cards */
-   let coronaCards = post_data.posts.filter(card=>card.batch == 'covid' && card.screens == 'UPDATES');
-  
-   let coronaCard  = coronaCards[Math.floor(Math.random() * coronaCards.length)];
+   const posts_data = await posts_response.json();
 
    res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
-   res.json(coronaCard);
+   res.json(posts_data);
     
   
 })
+
 
 app.get('/globalDonations', async(req,res)=>{
   const agent = new https.Agent({
