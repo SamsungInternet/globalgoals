@@ -2,7 +2,7 @@
     "name" : "Samsung Global Goals",
     "short_name" : "Samsung Global Goals",
     "description" : "Samsung Global Goals Web App",
-    "start_url" : "https://globalgoals.glitch.me/",
+    "start_url" : "https://samsung-global-goals.web.app/",
     "lang" : "English",
     "display" : "standalone",
     "theme_color": "#3d3d3d",

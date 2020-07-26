@@ -1,7 +1,7 @@
 function getPostsCards(posts, type){
 
   
-    let cards = posts.filter(post => post.batch == type);
+    let cards = posts.filter(post => post.batch == type && post.screens == 'UPDATES');
         /*Get One Random*/
     let card = cards[Math.floor(Math.random() * cards.length)];
 
@@ -24,17 +24,12 @@ function getPostsCards(posts, type){
         
 }
 
-async function loadDynamicCards(postsData){
-
-    
+async function loadDynamicCards(){    
     
     try {
         
         const wallpaper =  await fetch('/wallpaper');  
         const wallpaperJson = await wallpaper.json();
-
-        const coronaCards = await fetch('/corona');          
-        const coronaJson = await coronaCards.json();
 
         const posts = await fetch('/posts');
         const postJson = await posts.json();
@@ -43,27 +38,10 @@ async function loadDynamicCards(postsData){
         const videoCard = getPostsCards(postJson.posts, 'undp_video');
         const ecommerceCard = getPostsCards(postJson.posts, 'undp_ecommerce');
         const podcastCard = getPostsCards(postJson.posts, 'undp_goalcast');
-        
+        const coronaCard = getPostsCards(postJson.posts, 'covid');
 
 
-        
-
-        if (coronaJson.type == 'NORMAL'){
-            coronaCard = createVerticalCard(coronaJson.title,
-                            coronaJson.message,
-                            coronaJson.assetUrl,
-                            coronaJson.goalNo,
-                            [[coronaJson.action,coronaJson.actionUrl]]);
-        }else{
-            coronaCard = createHorizontalCard(coronaJson.title,
-                coronaJson.message,
-                coronaJson.assetUrl,
-                coronaJson.goalNo,
-                [[coronaJson.action,coronaJson.actionUrl]]);
-        } 
-  
-
-   
+          
         const wallpaperCard = createWallpaperCard(`<p>${wallpaperJson.credits}</p>
                                                     <p>#GlobalGoal${wallpaperJson.goalNo}</p>
                                                     <a href="goal.html?no=${wallpaperJson.goalNo}" id="link-goal">Learn More</a>`,
