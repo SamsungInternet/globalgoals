@@ -10,10 +10,15 @@
     padding: 0px;
 }
 
+.oui-bubble {
+    height: auto;
+}
+
 .donation-chart-header {
     padding: var(--card-padding);
     padding-bottom: 0px;
 }
+
 
 .donation-chart-bubble {
     padding: 0rem;
@@ -30,7 +35,7 @@
     flex-flow: row nowrap;
     padding-left: calc(var(--card-padding) * -1);
     justify-content: flex-start;
-    align-items: center;
+    align-items: center;   
 }
 
 .donation-chart-icon {
@@ -39,11 +44,12 @@
 }
 
 .donation-chart-bar {
-    height: 100%;
+    height: 6rem;
     min-width: .6rem;
     border-left: solid 5px var(--surface-background);
     border-radius: 0px 13px 13px 0px;
 }
+   
 
 .donation-chart-text {
     grid-row: 1;
