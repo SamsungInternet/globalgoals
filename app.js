@@ -19,20 +19,19 @@ app.get('/wallpaper', async (req,res)=>{
         rejectUnauthorized: false
       });
 
-   
+    
     const body = {
         "key": process.env.API_KEY,
         "uid": process.env.UID,
         "language": ["en-UK"],
         "deviceModel": "Samsung",
-        "salesCode": "",
         "clientVersion": "1",
         "country":"UK"
       };
 
 
 
-    
+       
         const wallpapers_response = await fetch(url+'/wallpapers/', {
             agent,
             method: 'post',
@@ -42,14 +41,13 @@ app.get('/wallpaper', async (req,res)=>{
         })
         
         const wallpapers_data = await wallpapers_response.json();
-        /*Retrieve One Random Wallpaper */
-        /*Filter only wallpapers with quotes */
-        let wallpaperQuotes = wallpapers_data.wallpapers.filter(wallpaper => wallpaper.type == 'QUOTE');
-        /*Get One Random*/
-        let wallpaper = wallpaperQuotes[Math.floor(Math.random() * wallpaperQuotes.length)];
+       
         
         res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
-        res.json(wallpaper)    
+        res.json(wallpapers_data);
+
+       
+       
    
 })
 
@@ -66,8 +64,7 @@ app.get('/globalDonations', async(req,res)=>{
       "country": "UK",
       "language": ["en-EN"],
       "deviceModel" : "Samsung",
-      "clientVersion" : "1.0",
-      "salesCode" : ""
+      "clientVersion" : "1.0",    
   }
 
   const donations_response = await fetch(url+'/getGlobalDonations/', {
@@ -90,6 +87,7 @@ app.get('/posts', async(req,res)=>{
     rejectUnauthorized: false
   });
 
+
   const body = 
     {
       "key": process.env.API_KEY,
@@ -97,8 +95,7 @@ app.get('/posts', async(req,res)=>{
       "country": "UK",
       "language": ["en-EN"],
       "deviceModel" : "Samsung",
-      "clientVersion" : "1.0",
-      "salesCode" : ""
+      "clientVersion" : "1.0"
   }
 
   const posts_response = await fetch(url+'/posts/', {
@@ -109,10 +106,9 @@ app.get('/posts', async(req,res)=>{
     }) 
  
    const posts_data = await posts_response.json();
-
    res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
    res.json(posts_data);
-    
+  
   
 })
 
