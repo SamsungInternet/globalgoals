@@ -12,43 +12,37 @@ app.use(express.static('public'));
 
 
 app.get('/wallpaper', async (req,res)=>{
-    const agent = new https.Agent({
-        rejectUnauthorized: false
-      });
+  const agent = new https.Agent({
+      rejectUnauthorized: false
+    });
 
+  
     const body = {
         "key": process.env.API_KEY,
         "uid": process.env.UID,
         "language": ["en-UK"],
         "deviceModel": "Samsung",
-        "salesCode": "",
         "clientVersion": "1",
         "country":"UK"
       };
 
 
 
-    
-        const wallpapers_response = await fetch(url+'/wallpapers/', {
+     
+      const wallpapers_response = await fetch(url+'/wallpapers/', {
             agent,
             method: 'post',
             body:    JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' },
 
-        }) 
-    
-        const wallpapers_data = await wallpapers_response.json();
-
-        /*Retrieve One Random Wallpaper */
-        /*Filter only wallpapers with quotes */
-        let wallpaperQuotes = wallpapers_data.wallpapers.filter(wallpaper => wallpaper.type == 'QUOTE');
-        /*Get One Random*/
-        let wallpaper = wallpaperQuotes[Math.floor(Math.random() * wallpaperQuotes.length)];
-        
-        res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
-        res.json(wallpaper)
-    
-   
+        })
+      
+      const wallpapers_data = await wallpapers_response.json();
+     
+      
+      res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+      res.json(wallpapers_data);
+     
 })
 
 app.get('/posts', async(req,res)=>{
@@ -75,7 +69,7 @@ app.get('/posts', async(req,res)=>{
     }) 
  
    const posts_data = await posts_response.json();
-
+   
    res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
    res.json(posts_data);
     
