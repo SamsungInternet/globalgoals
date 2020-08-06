@@ -214,7 +214,7 @@ let getActionsContent = (cActions) => {
 let loadStaticCards = (cMainContent) =>{
     const donateCard = createVerticalCard( 'Donate directly to the UNDP',
     'Donate to the <a href=# id="undp-link">UNDP</a> to help tackle the root causes of poverty and create a better life for everyone.',
-     'images/raster/hands-vert.jpg',
+     'images/raster/hands-vert.webp',
      0,
      [['Donate','https://give.undp.org/give/120717/#!/donation/checkout']]);
 
@@ -230,7 +230,7 @@ let loadStaticCards = (cMainContent) =>{
     cMainContent.appendChild(learnCard);
     const peopleCard = createHorizontalCard('We the People',
     'This star-studded video introduces the new plan for the people and planet: the UN Global Goals for Sustainable Development. Audio is in English.</p>',
-    '/images/raster/video-horz.jpg',
+    '/images/raster/video-horz.webp',
     0,
     [['Watch','https://youtu.be/RpqVmvMCmp0']]
     );
@@ -239,7 +239,7 @@ let loadStaticCards = (cMainContent) =>{
 
     const workCard   = createHorizontalCard('How this app works',
     'When you see ads from this app, you will earn money for donations that support the Global Goals, such as fighting to end poverty, reducing social inequality, and tackling climate change.',
-    '/images/raster/boy-horz.jpg',
+    '/images/raster/boy-horz.webp',
     0,
     null
     );

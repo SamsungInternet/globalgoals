@@ -4,13 +4,13 @@ var urlsToCache = [
     'css/gg-dark.css',
     'css/gg-light.css',
     'css/gg.css',
-    'images/raster/hands-vert.jpg',
+    'images/raster/hands-vert.webp',
     'images/raster/goals-vert.jpg',
-    'images/raster/video-horz.jpg',
-    'images/raster/boy-horz.jpg',
+    'images/raster/video-horz.webp',
+    'images/raster/boy-horz.webp',
     'images/raster/goals_header.jpg',
-    'images/raster/covid_pandemic.jpg',
-    'images/raster/wallpaper-quote.png',
+    'images/raster/covid_pandemic.webp',
+    'images/raster/wallpaper-quote.webp',
     'assets/goalsDetail.js',
     'js/_gg_ui.js',
 ];
@@ -37,7 +37,7 @@ self.addEventListener('fetch', function(event){
       })      
       .catch( error => {
         if(request.url.includes('/media/posts/covid')){
-          return caches.match('/images/raster/covid_pandemic.jpg')
+          return caches.match('/images/raster/covid_pandemic.webp')
         }
         if(request.url.includes('/media/wallpapers')){
           return caches.match('/images/raster/wallpaper-quote.png')

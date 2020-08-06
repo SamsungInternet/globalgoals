@@ -122,8 +122,9 @@ h3 {
 }
 
 a:link, a:active, a:visited {
-    color: var(--active-category);
+    color: #2368bd;
     text-decoration: none;
+    font-weight: bold;
 }
 
 ._sticky_title {
