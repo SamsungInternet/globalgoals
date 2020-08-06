@@ -13,6 +13,7 @@ var urlsToCache = [
     'images/raster/wallpaper-quote.webp',
     'assets/goalsDetail.js',
     'js/_gg_ui.js',
+    'offline.html'
 ];
 
 self.addEventListener('install', function(event) {
@@ -28,6 +29,17 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('fetch', function(event){
   const request = event.request;
+
+  /* Navigation Request, HTML */
+  if(request.headers.get('Accept').includes('text/html')){
+      event.respondWith(
+        fetch(request)
+        .catch( error => {
+          //fallback page
+          return caches.match('offline.html');
+        })
+      )
+  }
   /* Request Image */
   if(request.headers.get('Accept').includes('image')){
     event.respondWith(
