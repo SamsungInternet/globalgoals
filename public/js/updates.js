@@ -1,3 +1,5 @@
+
+
 function getPostsCards(posts, type){
 
   
@@ -106,6 +108,8 @@ async function loadPostCards(){
 window.addEventListener('load', () => {
     let mainContent = document.getElementById('_main_content');
     loadStaticCards(mainContent);   
+    let buttonShowMore = document.getElementById('_btn_showmore');
+    buttonShowMore.classList.remove('hidden')
 })
 
 loadWallpapers();

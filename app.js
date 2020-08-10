@@ -36,7 +36,7 @@ app.get('/wallpaper', async (req,res)=>{
             agent,
             method: 'post',
             body:    JSON.stringify(body),
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json'},
 
         })
         
@@ -83,6 +83,8 @@ app.get('/globalDonations', async(req,res)=>{
 })
 
 app.get('/posts', async(req,res)=>{
+  
+  
   const agent = new https.Agent({
     rejectUnauthorized: false
   });
@@ -102,7 +104,7 @@ app.get('/posts', async(req,res)=>{
         agent,
         method: 'post',
         body:    JSON.stringify(body),
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json'},
     }) 
  
    const posts_data = await posts_response.json();

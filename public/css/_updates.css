@@ -34,3 +34,35 @@
     margin: 0.5em;
     color: white
 }
+
+.more-info {
+    
+    position: inherit;
+    bottom: 50px;
+    padding: 10px 20px;
+    display: flex;
+    margin-bottom: 20px;
+    z-index: 15;
+    width: 100vw;
+    flex-direction: column;    
+}
+
+.btn {
+    margin: 20px;
+    font-size: 12pt;
+    padding: 0 50px;
+    margin: 0 auto;
+    background-color: #0a78fc;
+    color: white;
+    width: 100%;    
+}
+
+@media only screen and (min-width: 768px){
+    .btn{
+        width:20%
+    }
+}
+
+.hidden{
+    display: none;
+}
