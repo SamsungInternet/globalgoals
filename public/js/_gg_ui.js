@@ -98,11 +98,15 @@ let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLang
             });
             if(cBadge) {
                 
-                let badge = document.createElement('span');
-                badge.innerText = cBadgeTags[0];
-                badge.setAttribute('class', 'gg-bubble-badge');
-                badge.setAttribute('style', `background-color: var(--gg${cBadgeTags[0]}-color)`);
-                card.appendChild(badge);
+                cBadgeTags.forEach(tag =>{
+                    let badge = document.createElement('span');
+                    badge.innerText = tag;
+                    badge.setAttribute('class', 'gg-bubble-badge');
+                    badge.setAttribute('style', `background-color: var(--gg${tag}-color)`);
+                    card.appendChild(badge);
+
+                })
+               
             }
             break;
         case CardLayoutType.WALLPAPER:
@@ -221,8 +225,8 @@ let getActionsContent = (cActions) => {
 
 let loadStaticCards = (cMainContent) =>{
     const donateCard = createVerticalCard( 'Donate directly to the UNDP',
-    'Donate to the <a href=# id="undp-link">UNDP</a> to help tackle the root causes of poverty and create a better life for everyone.',
-     'images/raster/hands-vert.webp',
+    'Donate as little as £1 to support any Global Goal through a quick in-app purchase.',
+     'images/raster/donate_vert.webp',
      0,
      [['Donate','https://give.undp.org/give/120717/#!/donation/checkout']]);
 
@@ -251,7 +255,16 @@ let loadStaticCards = (cMainContent) =>{
     0,
     null
     );
+    cMainContent.appendChild(workCard);  
 
-    cMainContent.appendChild(workCard);   
+    const unCard     = createVerticalCard('Developed by the United Nations',
+                                         'The 17 Global Goals, also called the Sustainable Development Goals (SDGs), were built on decades of work by the UN and adopted by all host countries',
+                                         '/images/raster/undp.webp',
+                                         0,
+                                         [['Learn More','www.undp.org']])
+
+    cMainContent.appendChild(unCard);                                       
+
+     
 }
 

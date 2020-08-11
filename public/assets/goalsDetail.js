@@ -10,9 +10,6 @@ const goalsJson = {
                       "Having a job does not guarantee a decent living. In fact, 8 per cent of employed workers and their families worldwide lived in extreme poverty in 2018.",
                       "Globally, there are 122 women aged 25 to 34 living in extreme poverty for every 100 men of the same age group.",
                       "The majority of people living on less than $1.90 a day live in sub-Saharan Africa.",
-                      "High poverty rates are often found in small, fragile and conflict-affected countries.",
-                      "Poverty affects children disproportionately. One out of five children live in extreme poverty.",
-                      "As of 2018, 55% of the world’s population have no access to social protection.",
                       "In 2018, only 41% of women giving birth received maternity cash benefits."
                     ]
         },
@@ -26,9 +23,7 @@ const goalsJson = {
                         "The majority of the world’s hungry people live in developing countries, where 12.9 per cent of the population is undernourished.",
                         "Sub-Saharan Africa remains the region with the highest prevalence of hunger, with the rate increasing from 20.7 per cent in 2014 to 23.2 per cent in 2017.",
                         "If women farmers had the same access to resources as men, the number of hungry in the world could be reduced by up to 150 million.",
-                        "Poor nutrition causes nearly half (45 per cent) of deaths in children under five – 3.1 million children each year.",
-                        "149 million children under 5 years of age—22 per cent of the global under-5 population—were still chronically undernourished in 2018."
-                    ]
+                      ]
         },
         {
             "goalNo": 3,
@@ -40,9 +35,7 @@ const goalsJson = {
                       "Since 2000, measles vaccines have averted nearly 15.6 million deaths.",
                       "Despite determined global progress, an increasing proportion of child deaths are in Sub-Saharan Africa and Southern Asia. Four out of every five deaths of children under age five occur in these regions.",
                       "Children born into poverty are almost twice as likely to die before the age of five as those from wealthier families.",
-                      "Children of educated mothers—even mothers with only primary schooling—are more likely to survive than children of mothers with no education.",
-                      "Only half of women in developing regions receive the recommended amount of health care they need."
-                     ]
+                      ]
         },
         {
             "goalNo": 4,
@@ -66,9 +59,7 @@ const goalsJson = {
                       "Globally, 750 million women and girls were married before the age of 18 and at least 200 million women and girls in 30 countries have undergone FGM.",
                       "The rates of girls between 15-19 who are subjected to FGM (female genital mutilation) in the 30 countries where the practice is concentrated have dropped from 1 in 2 girls in 2000 to 1 in 3 girls by 2017.",
                       "In 18 countries, husbands can legally prevent their wives from working; in 39 countries, daughters and sons do not have equal inheritance rights; and 49 countries lack laws protecting women from domestic violence.",
-                      "One in five women and girls, including 19 per cent of women and girls aged 15 to 49, have experienced physical and/or sexual violence by an intimate partner within the last 12 months. Yet, 49 countries have no laws that specifically protect women from such violence.",
-                      "While women have made important inroads into political office across the world, their representation in national parliaments at 23.7 per cent is still far from parity.",
-                      "In 46 countries, women now hold more than 30 per cent of seats in national parliament in at least one chamber."
+                       "In 46 countries, women now hold more than 30 per cent of seats in national parliament in at least one chamber."
             ]
 
         },
@@ -81,9 +72,7 @@ const goalsJson = {
             "facts": ["1 in 4 health care facilities lacks basic water services",
                      "3 in 10 people lack access to safely managed drinking water services and 6 in 10 people lack access to safely managed sanitation facilities.",
                      "At least 892 million people continue to practice open defecation.",
-                     "Women and girls are responsible for water collection in 80 per cent of households without access to water on premises.",
-                     "Water scarcity affects more than 40 per cent of the global population and is projected to rise. Over 1.7 billion people are currently living in river basins where water use exceeds recharge."
-                ]
+                 ]
         },
         {
             "goalNo": 7,
@@ -95,8 +84,6 @@ const goalsJson = {
                 "13% of the global population still lacks access to modern electricity.",
                 "3 billion people rely on wood, coal, charcoal or animal waste for cooking and heating.",
                 "Energy is the dominant contributor to climate change, accounting for around 60 per cent of total global greenhouse gas emissions.",
-                "Indoor air pollution from using combustible fuels for household energy caused 4.3 million deaths in 2012, with women and girls accounting for 6 out of every 10 of these.",
-                "The share of renewable energy in final energy consumption has reached 17.5% in 2015."
 
             ]
         },
@@ -110,10 +97,7 @@ const goalsJson = {
                 "The global unemployment rate in 2017 was 5.6%, down from 6.4% in 2000.",
                 "Globally, 61% of all workers were engaged in informal employment in 2016. Excluding the agricultural sector, 51% of all workers fell into this employment category.",
                 "Men earn 12.5% more than women in 40 out of 45 countries with data.",
-                "The global gender pay gap stands at 23 per cent globally and without decisive action, it will take another 68 years to achieve equal pay. Women’s labour force participation rate is 63 per cent while that of men is 94 per cent.",
-                "Despite their increasing presence in public life, women continue to do 2.6 times the unpaid care and domestic work that men do.",
-                "470 million jobs are needed globally for new entrants to the labor market between 2016 and 2030."
-
+  
             ]
         },
         {
@@ -126,9 +110,7 @@ const goalsJson = {
                 "Basic infrastructure like roads, information and communication technologies, sanitation, electrical power and water remains scarce in many developing countries",
                 "16% of the global population does not have access to mobile broadband networks.",
                 "For many African countries, particularly the lower-income countries, the existent constraints regarding infrastructure affect firm productivity by around 40 per cent.",
-                "The global share of manufacturing value added in GDP increased from 15.2% in 2005 to 16.3% in 2017, driven by the fast growth of manufacturing in Asia.",
-                "Industrialization’s job multiplication effect has a positive impact on society. Every job in manufacturing creates 2.2 jobs in other sectors."
-
+  
             ]
         },
         {
@@ -141,8 +123,6 @@ const goalsJson = {
                 "In 2016, over 64.4% of products exported by the least developed countries to world markets faced zero tariffs, an increase of 20% since 2010.",
                 "Evidence from developing countries shows that children in the poorest 20 per cent of the populations are still up to three times more likely to die before their fifth birthday than children in the richest quintiles.",
                 "Social protection has been significantly extended globally, yet persons with disabilities are up to five times more likely than average to incur catastrophic health expenditures.",
-                "Despite overall declines in maternal mortality in most developing countries, women in rural areas are still up to three times more likely to die while giving birth than women living in urban centers.",
-                "Up to 30 per cent of income inequality is due to inequality within households, including between women and men. Women are also more likely than men to live below 50 per cent of the median income."
             ]
         },
         {
@@ -155,9 +135,7 @@ const goalsJson = {
                 "Half of humanity – 3.5 billion people – lives in cities today and 5 billion people are projected to live in cities by 2030.",
                 "95 per cent of urban expansion in the next decades will take place in developing world.",
                 "883 million people live in slums today and most them are found in Eastern and South-Eastern Asia.",
-                "The world’s cities occupy just 3 per cent of the Earth’s land, but account for 60-80 per cent of energy consumption and 75 per cent of carbon emissions.",
-                "Rapid urbanization is exerting pressure on fresh water supplies, sewage, the living environment, and public health.",
-                "As of 2016, 90% of urban dwellers have been breathing unsafe air, resulting in 4.2 million deaths due to ambient air pollution. More than half of the global urban population were exposed to air pollution levels at least 2.5 times higher than the safety standard."
+                  "As of 2016, 90% of urban dwellers have been breathing unsafe air, resulting in 4.2 million deaths due to ambient air pollution. More than half of the global urban population were exposed to air pollution levels at least 2.5 times higher than the safety standard."
             ]
         },
         {
@@ -196,8 +174,6 @@ const goalsJson = {
                 "Over three billion people depend on marine and coastal biodiversity for their livelihoods.",
                 "Globally, the market value of marine and coastal resources and industries is estimated at $3 trillion per year or about 5 per cent of global GDP.",
                 "Oceans contain nearly 200,000 identified species, but actual numbers may lie in the millions.",
-                "Oceans absorb about 30 per cent of carbon dioxide produced by humans, buffering the impacts of global warming.",
-                "Oceans serve as the world’s largest source of protein, with more than 3 billion people depending on the oceans as their primary source of protein",
                 "Marine fisheries directly or indirectly employ over 200 million people."
             ]
         },
@@ -211,7 +187,6 @@ const goalsJson = {
                 "Around 1.6 billion people depend on forests for their livelihood, including 70 million indigenous people.",
                 "Forests are home to more than 80 per cent of all terrestrial species of animals, plants and insects.",
                 "74 per cent of the poor are directly affected by land degradation globally.",
-                "As many as 80 per cent of people living in rural areas in developing countries rely on traditional plant-­‐based medicines for basic healthcare.",
                 "Micro-organisms and invertebrates are key to ecosystem services, but their contributions are still poorly known and rarely acknowledged."
             ]
         },
@@ -225,8 +200,6 @@ const goalsJson = {
                 "Among the institutions most affected by corruption are the judiciary and police.",
                 "Corruption, bribery, theft and tax evasion cost some US $1.26 trillion for developing countries per year; this amount of money could be used to lift those who are living on less than $1.25 a day above $1.25 for at least six years.",
                 "Birth registration has occurred for 73 per cent of children under 5, but only 46% of Sub-Saharan Africa have had their births registered.",
-                "Approximately 28.5 million primary school age who are out of school live in conflict-affected areas.",
-                "The rule of law and development have a significant interrelation and are mutually reinforcing, making it essential for sustainable development at the national and international level.",
                 "The proportion of prisoners held in detention without sentencing has remained almost constant in the last decade, at 31% of all prisoners."
             ]
         },
@@ -239,8 +212,6 @@ const goalsJson = {
             "facts": [
                 "Official development assistance stood at $146.6  billion in 2017. This represents a decrease of 0.6 per cent in real terms over 2016.",
                 "79 per cent of imports from developing countries enter developed countries duty-free",
-                "The debt burden on developing countries remains stable at about 3 per cent of export revenue",
-                "The number of Internet users in Africa almost doubled in the past four years",
                 "30 per cent of the world’s youth are digital natives, active online for at least five years",
                 "But more four billion people do not use the Internet, and 90 per cent of them are from the developing world"
             ]
