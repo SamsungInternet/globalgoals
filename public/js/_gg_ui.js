@@ -68,12 +68,12 @@ let createBlankCard = (cContent, cGGNum, cBadge) => {
     return createCard(CardLayoutType.BLANK, null, cContent, null, cGGNum, null, null, cBadge);
 };
 
-let createVerticalCard = (cTitle, cContent, cImageUrl, cGGNum, cActions, cLanguage) => {
-    return createCard(CardLayoutType.VERTICAL, cTitle, cContent, cImageUrl, cGGNum, null, cLanguage, 0, cActions);
+let createVerticalCard = (cTitle, cContent, cImageUrl, cGGNum, cActions, cBadge, cBadgeTags, cLanguage ) => {
+    return createCard(CardLayoutType.VERTICAL, cTitle, cContent, cImageUrl, cGGNum, null, cLanguage, cBadge, cBadgeTags, cActions);
 };
 
-let createHorizontalCard = (cTitle, cContent, cImageUrl, cGGNum, cActions, cLanguage) => {
-    return createCard(CardLayoutType.HORIZONTAL, cTitle, cContent, cImageUrl, cGGNum, null, cLanguage, 0, cActions);
+let createHorizontalCard = (cTitle, cContent, cImageUrl, cGGNum, cActions, cBadge, cBadgeTags,cLanguage ) => {
+    return createCard(CardLayoutType.HORIZONTAL, cTitle, cContent, cImageUrl, cGGNum, null, cLanguage, cBadge, cBadgeTags, cActions);
 };
 
 let createWallpaperCard = (cContent, cImageUrl, cGGNum, cLink, cLanguage) => {
@@ -85,7 +85,7 @@ let createGoalIconCard = (cGGNum, cImage, cLink, cLanguage) => {
 };
 
 /* Card creator */
-let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLanguage, cBadge, cActions) => {
+let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLanguage, cBadge, cBadgeTags, cActions) => {
     let card = document.createElement('div');
     card.setAttribute('class', getCSSCardLayout(cLayoutType, cGGNum, cBadge));
     let content;
@@ -96,6 +96,14 @@ let createCard = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLink, cLang
             content.forEach(part => {
                 card.appendChild(part);
             });
+            if(cBadge) {
+                
+                let badge = document.createElement('span');
+                badge.innerText = cBadgeTags[0];
+                badge.setAttribute('class', 'gg-bubble-badge');
+                badge.setAttribute('style', `background-color: var(--gg${cBadgeTags[0]}-color)`);
+                card.appendChild(badge);
+            }
             break;
         case CardLayoutType.WALLPAPER:
             card.appendChild(getWallpaperContent(cImageUrl, cLink, cContent));

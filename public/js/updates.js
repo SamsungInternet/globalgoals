@@ -13,13 +13,17 @@ function getPostsCards(posts, type){
                         card.message,
                         card.assetUrl,
                         card.goalNo,
-                        [[card.action,card.actionUrl]]);
+                        [[card.action,card.actionUrl]],
+                        card.showGoalTags, 
+                        card.goalTags);
     }else{
         postCard = createHorizontalCard(card.title,
             card.message,
             card.assetUrl,
             card.goalNo,
-            [[card.action,card.actionUrl]]);
+            [[card.action,card.actionUrl]],
+            card.showGoalTags, 
+            card.goalTags);
     } 
 
     return postCard;
