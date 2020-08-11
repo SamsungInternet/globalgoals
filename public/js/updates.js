@@ -1,5 +1,49 @@
-function getPostsCards(posts, type){
+function loadRandomGoal(){
+    const goals = goalsJson.goals;
+    let goal = goals[Math.floor(Math.random() * goals.length)];
+    return goal;
+}
 
+function loadGoalCard(goal){
+    const goalCard = createHorizontalCard( `${goal.goalNo}: ${goal.title}`,
+                                             goal.description,
+                                             `images/gg_icons/gg_${goal.goalNo}_icon.svg`,
+                                             goal.goalNo,
+                                             [['Learn More', goal.url]]);
+    return goalCard;
+}
+
+function loadFactsGoalCard(goal){
+    let content = `    <h1>Facts and Figures</h1>     
+                        <div>                       
+                            <ul>    `;
+
+    for(let i=0; i < goal.facts.length; i++){
+    content+= `<li class="oui-bubble-item">${goal.facts[i]}</li>`
+    }
+
+    content+=`</ul> `
+
+    let factCard = createBlankCard(content, goal.goalNo, true);
+    return factCard; 
+
+}
+
+function getSurvey(posts){
+    let card = posts.find(post => post.id == 'article_51_0_en-ca');
+       
+    postCard = createVerticalCard(card.title,
+        card.message,
+        card.assetUrl,
+        card.goalNo,
+        [[card.action,card.actionUrl]],
+        card.showGoalTags, 
+        card.goalTags);
+    return postCard;
+}
+
+
+function getPostsCards(posts, type){
   
     let cards = posts.filter(post => post.batch == type && post.screens == 'UPDATES');
         /*Get One Random*/
@@ -11,13 +55,17 @@ function getPostsCards(posts, type){
                         card.message,
                         card.assetUrl,
                         card.goalNo,
-                        [[card.action,card.actionUrl]]);
+                        [[card.action,card.actionUrl]],
+                        card.showGoalTags, 
+                        card.goalTags);
     }else{
         postCard = createHorizontalCard(card.title,
             card.message,
             card.assetUrl,
             card.goalNo,
-            [[card.action,card.actionUrl]]);
+            [[card.action,card.actionUrl]],
+            card.showGoalTags, 
+            card.goalTags);
     } 
 
     return postCard;
@@ -77,7 +125,7 @@ async function loadPostCards(){
         const posts = await fetch('/posts');
         const postJson = await posts.json();
         
-
+        const surveyCard = getSurvey(postJson.posts);
         const newsCard = getPostsCards(postJson.posts, 'undp_article');
         const videoCard = getPostsCards(postJson.posts, 'undp_video');
         const ecommerceCard = getPostsCards(postJson.posts, 'undp_ecommerce');
@@ -86,9 +134,11 @@ async function loadPostCards(){
         
         let mainContent = document.getElementById('_main_content');  
 
-        mainContent.appendChild(coronaCard);   
-        mainContent.appendChild(newsCard);
+       
         mainContent.appendChild(videoCard);
+        mainContent.appendChild(surveyCard);
+        mainContent.appendChild(coronaCard);          
+        mainContent.appendChild(newsCard);
         mainContent.appendChild(ecommerceCard);
         mainContent.appendChild(podcastCard);       
                                                 
@@ -105,7 +155,15 @@ async function loadPostCards(){
 
 window.addEventListener('load', () => {
     let mainContent = document.getElementById('_main_content');
+    let goal = loadRandomGoal();
+    let goalCard = loadGoalCard(goal);
+    mainContent.appendChild(goalCard);
     loadStaticCards(mainContent);   
+    let factCard = loadFactsGoalCard(goal);
+    mainContent.appendChild(factCard);
+   
+    let buttonShowMore = document.getElementById('_btn_showmore');
+    buttonShowMore.classList.remove('hidden')
 })
 
 loadWallpapers();

@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="/css/gg-dark.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="/css/gg-light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">
     <link rel="stylesheet" href="/css/_updates.css">
-    <script src="/js/updates.js"></script>
-    <script rel="preload" src="/js/_gg_ui.js" as="script"></script> 
+    <script rel="preload" src="/js/_gg_ui.js" as="script"></script>
+    <script src="/js/updates.js"></script>     
+    <script rel="preload" src="assets/goalsDetail.js" as="script"></script>
     <script defer src="/__/firebase/7.15.2/firebase-app.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script> 
@@ -35,9 +36,12 @@
                 </span>
             </div>
             <section id="_main_content" class="main-content-layout">
-                
+            </section>
+            <section class="more-info">
+                <button id="_btn_showmore" onClick="window.location.reload();" class="btn oui-button hidden">See More</button>
             </section>
         </main>
+               
         <img id="main-colorbar" src="/images/ui_elements/colorband.svg" alt="main bar">
         <nav id="main-menu">
             <div class="main-menu-button main-menu-button--active">

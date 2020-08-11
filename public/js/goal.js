@@ -4,6 +4,89 @@ function searchGoal(goalNo){
     return goalsArray.find(element => element.goalNo == goalNo);
 }
 
+
+
+function getSamsungCard(goal, posts){
+    let card = posts.find(post => post.batch == 'samsunggoals' && post.goalNo == goal && post.screens == 'GOAL_DETAILS');
+    postCard = createHorizontalCard(card.title,
+        card.message,
+        '/images/raster/samsung.webp',
+        goal,
+        [[card.action,card.actionUrl]],
+        false, 
+        card.goalTags);
+    return postCard;    
+}
+
+function getPostsCards( goal, posts, type){
+  
+    let cards = posts.filter(post => post.batch == type && post.goalNo == goal && post.screens == 'GOAL_DETAILS');
+        /*Get One Random*/
+    let card = cards[Math.floor(Math.random() * cards.length)];    
+    
+    if(card){
+        if (card.type == 'NORMAL'){
+            postCard = createVerticalCard(card.title,
+                            card.message,
+                            card.assetUrl,
+                            0,
+                            [[card.action,card.actionUrl]],
+                            card.showGoalTags, 
+                            card.goalTags);
+        }else{
+            postCard = createHorizontalCard(card.title,
+                card.message,
+                card.assetUrl,
+                0,
+                [[card.action,card.actionUrl]],
+                card.showGoalTags, 
+                card.goalTags);
+        } 
+        return postCard;
+    }    
+    return;
+        
+}
+
+
+async function loadPostCards(goal){    
+   
+    
+    try {
+        
+        let mainContent = document.getElementById('_main_content');
+        const posts = await fetch('/posts');
+        const postJson = await posts.json();
+        if(goal==3){
+            const coronaCard = getPostsCards(goal, postJson.posts, 'covid');
+            mainContent.appendChild(coronaCard); 
+        }
+        
+        const impactCard = getPostsCards(goal, postJson.posts, 'undp_impact');
+        const videoCard = getPostsCards(goal, postJson.posts, 'undp_video');
+        const newsCard = getPostsCards(goal, postJson.posts, 'undp_article');
+        const  samsungCard = getSamsungCard(goal, postJson.posts);
+        if(impactCard){
+            mainContent.appendChild(impactCard);
+        }
+        
+        mainContent.appendChild(samsungCard);
+        if(videoCard){
+            mainContent.appendChild(videoCard);
+        }
+        
+        mainContent.appendChild(newsCard);       
+                                                
+                                                  
+    }catch(error){
+        console.log(error);
+    }   
+                                                                  
+                        
+ 
+}
+
+
 function loadStaticGoalsCards(cRootContent){
     const learnCard = createVerticalCard('Learn about the Global Goals',
     'World leaders agreed to 17 goals for a better world by 2030. These goals have the power to change the world and the people in it',
@@ -17,7 +100,7 @@ function loadStaticGoalsCards(cRootContent){
 
     const developedCard = createVerticalCard('Developed by United Nations',
     'The 17 Global Goals, also called the Sustainable Development Goals (SDGs), were built on decades of work by the UN and adopted by all host countries.',
-    '/images/raster/goals-vert.jpg',                                
+    '/images/raster/undp.webp',                                
     0,
     [['Learn more','www.undp.org']]
     );
@@ -77,4 +160,7 @@ window.addEventListener('load', () => {
     let factCard = loadFactsCard(currentGoal);
     mainContent.appendChild(factCard);
     loadStaticGoalsCards(mainContent);
+    loadPostCards(goalNo);
+    
 })
+
