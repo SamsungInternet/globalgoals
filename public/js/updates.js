@@ -1,4 +1,17 @@
 
+function getSurvey(posts){
+    let card = posts.find(post => post.id == 'article_51_0_en-ca');
+       
+    postCard = createVerticalCard(card.title,
+        card.message,
+        card.assetUrl,
+        card.goalNo,
+        [[card.action,card.actionUrl]],
+        card.showGoalTags, 
+        card.goalTags);
+    return postCard;
+}
+
 
 function getPostsCards(posts, type){
 
@@ -83,7 +96,7 @@ async function loadPostCards(){
         const posts = await fetch('/posts');
         const postJson = await posts.json();
         
-
+        const surveyCard = getSurvey(postJson.posts);
         const newsCard = getPostsCards(postJson.posts, 'undp_article');
         const videoCard = getPostsCards(postJson.posts, 'undp_video');
         const ecommerceCard = getPostsCards(postJson.posts, 'undp_ecommerce');
@@ -92,9 +105,11 @@ async function loadPostCards(){
         
         let mainContent = document.getElementById('_main_content');  
 
-        mainContent.appendChild(coronaCard);   
-        mainContent.appendChild(newsCard);
+       
         mainContent.appendChild(videoCard);
+        mainContent.appendChild(surveyCard);
+        mainContent.appendChild(coronaCard);          
+        mainContent.appendChild(newsCard);
         mainContent.appendChild(ecommerceCard);
         mainContent.appendChild(podcastCard);       
                                                 
