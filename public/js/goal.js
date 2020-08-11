@@ -4,6 +4,76 @@ function searchGoal(goalNo){
     return goalsArray.find(element => element.goalNo == goalNo);
 }
 
+function getPostsCards( goal, posts, type){
+  
+    let cards = posts.filter(post => post.batch == type && post.goalNo == goal && post.screens == 'GOAL_DETAILS');
+        /*Get One Random*/
+    let card = cards[Math.floor(Math.random() * cards.length)];    
+    console.log(card);
+    
+    if (card.type == 'NORMAL'){
+        postCard = createVerticalCard(card.title,
+                        card.message,
+                        card.assetUrl,
+                        0,
+                        [[card.action,card.actionUrl]],
+                        card.showGoalTags, 
+                        card.goalTags);
+    }else{
+        postCard = createHorizontalCard(card.title,
+            card.message,
+            card.assetUrl,
+            0,
+            [[card.action,card.actionUrl]],
+            card.showGoalTags, 
+            card.goalTags);
+    } 
+
+    return postCard;
+        
+}
+
+
+async function loadPostCards(goal){    
+   
+    
+    try {
+        
+        let mainContent = document.getElementById('_main_content');
+        const posts = await fetch('/posts');
+        const postJson = await posts.json();
+        if(goal==3){
+            const coronaCard = getPostsCards(3, postJson.posts, 'covid');
+            mainContent.appendChild(coronaCard); 
+        }
+        
+       /* const surveyCard = getSurvey(postJson.posts);
+        const newsCard = getPostsCards(postJson.posts, 'undp_article');
+        const videoCard = getPostsCards(postJson.posts, 'undp_video');
+        const ecommerceCard = getPostsCards(postJson.posts, 'undp_ecommerce');
+        const podcastCard = getPostsCards(postJson.posts, 'undp_goalcast');
+        const coronaCard = getPostsCards(postJson.posts, 'covid');
+        
+         
+
+       
+        mainContent.appendChild(videoCard);
+        mainContent.appendChild(surveyCard);
+        mainContent.appendChild(coronaCard);          
+        mainContent.appendChild(newsCard);
+        mainContent.appendChild(ecommerceCard);
+        mainContent.appendChild(podcastCard);      */ 
+                                                
+                                                  
+    }catch(error){
+        console.log(error);
+    }   
+                                                                  
+                        
+ 
+}
+
+
 function loadStaticGoalsCards(cRootContent){
     const learnCard = createVerticalCard('Learn about the Global Goals',
     'World leaders agreed to 17 goals for a better world by 2030. These goals have the power to change the world and the people in it',
@@ -77,4 +147,6 @@ window.addEventListener('load', () => {
     let factCard = loadFactsCard(currentGoal);
     mainContent.appendChild(factCard);
     loadStaticGoalsCards(mainContent);
+    loadPostCards(goalNo);
 })
+
