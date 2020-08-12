@@ -38,7 +38,8 @@ self.addEventListener('fetch', function(event){
           //fallback page
           return caches.match('offline.html');
         })
-      )
+      );
+      return;
   }
   /* Request Image */
   if(request.headers.get('Accept').includes('image')){
