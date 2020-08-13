@@ -36,7 +36,7 @@ async function loadDonationsCard(){
 window.addEventListener('load', () => {
     //adds the default donate card
     let mc = document.getElementById('_main_content');
-    let defaultDonateCard = createVerticalCard('Donate directly to the UNDP', 'Donate to the UNDP to help tackle the root causes of poverty and create a better life for everyone.', '/images/raster/donate_vert.webp', 0, [['Donate', '#']]); 
+    let defaultDonateCard = createVerticalCard('Donate directly to the UNDP', 'Donate to the UNDP to help tackle the root causes of poverty and create a better life for everyone.', '/images/raster/donate_vert.webp', 0, [['Donate', 'https://give.undp.org/give/120717/#!/donation/checkout']]); 
     mc.appendChild(defaultDonateCard);
 });
 
