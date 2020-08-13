@@ -1,50 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="css/oui-css/oui.css" rel="stylesheet">
-    <link href="css/gg.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/gg-dark.css" media="(prefers-color-scheme: dark)">
-    <link rel="stylesheet" href="css/gg-light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">
-    <link rel="shortcut icon" type="image/png" href="images/raster/icn_goals_colored.png"/>
-    <link rel="stylesheet" href="css/_introduction.css">
-    <title>Samsung | The Global Goals : Goals</title>
-</head>
-<body>
-    <header>
-        <img class="gg-logo" src="images/ui_elements/sgg_logo.svg" alt="Samsung - The Global Goals Logo">
-    </header>
+  <title>You are not connected to the Internet</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+  body {
+    background-color: #EFEFEF;
+    color: #2E2F30;
+    text-align: center;
+    font-family: arial, sans-serif;
+    margin: 0;
+  }
 
-    <main>
-        <h1>It seems like you are offline...</h1>
-        <article id="main">
+  div.dialog {
+    width: 95%;
+    max-width: 33em;
+    margin: 4em auto 0;
+  }
+
+  div.dialog > div {
+    border: 1px solid #CCC;
+    border-radius: 9px;
+    background-color: white;
+    padding: 7px 12% 0;
+    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  }
+
+  h1 {
+    font-size: 100%;
+    color: #1d1f99;
+    line-height: 1.5em;
+  }
+
+  div.dialog > p {
+    margin: 0 0 1em;
+    padding: 1em;
+    background-color: #F7F7F7;
+    border: 1px solid #CCC;
+    border-right-color: #999;
+    border-left-color: #999;
+    border-bottom-color: #999;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-color: #DADADA;
+    color: #666;
+    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  }
+  </style>
+</head>
+
+<body>
+  <!-- This file lives in public/404.html -->
+  <div class="dialog">
+    <div>
+      <h1>It looks like you've lost your Internet connection</h1>
+      <p>You may need to reconnect to Wi-Fi.</p>
+    </div>
+    <h1>It seems like you are offline...</h1>
+    <article id="main">
             <div>
                 <h2>Thanks for helping us all reach our Global Goals</h2>
                 <p>With this app, you can learn more about the United Nation's Global Goals, earn to give, and donate to support the specific goals that you care about.</p>
-            </div>
-        </article>
-        <article id="second">
-            <div>
-                <h2>Help out every time you use your phone</h2>
-                <p>You can donate money earned by viewing ads or donate directly to support the Global Goals, such as fighting to end poverty, reducing social inequality, and tackling climate change.</p>
-            </div>
-        </article>
-    </main>
-
-    <nav>
-        <a href="#second" id="next" class="btn oui-button">
-            Next
-        </a>
-        <a href="goals.html" id="close" class="btn oui-button hidden">
-            Close
-        </a>
-        <div class="dots">
-            <a href="#main" id="main-dot" class="dot dot-selected"></a>
-            <a href="#second" id="second-dot" class="dot"></a>
-        </div>
-    </nav>
+           </div>
+    </article>
+   
+  </div>
 </body>
-<script src="js/introduction.js"></script>
 </html>
+
+

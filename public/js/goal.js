@@ -1,3 +1,23 @@
+function appendBottons(goal){
+    let navMenu = document.getElementById('_main_menu');
+    let navigation = '';
+    if (goal > 1){
+        navigation =  `<a href="/goal.html?no=${goal-1}" class="oui-button btn">
+                           < Goal ${goal-1}
+                        </a>`
+    }
+
+    if (goal < 17){
+       navigation +=` <a href="/goal.html?no=${++goal}" class="oui-button btn">
+                            Goal ${+goal} >
+                     </a>`;
+    }
+    
+                       
+    navMenu.innerHTML = navigation;                   
+    
+}
+
 
 function searchGoal(goalNo){
     const goalsArray = goalsJson.goals;
@@ -8,14 +28,17 @@ function searchGoal(goalNo){
 
 function getSamsungCard(goal, posts){
     let card = posts.find(post => post.batch == 'samsunggoals' && post.goalNo == goal && post.screens == 'GOAL_DETAILS');
-    postCard = createHorizontalCard(card.title,
-        card.message,
-        '/images/raster/samsung.webp',
-        goal,
-        [[card.action,card.actionUrl]],
-        false, 
-        card.goalTags);
-    return postCard;    
+    if(card){
+        postCard = createHorizontalCard(card.title,
+            card.message,
+            '/images/raster/samsung.webp',
+            goal,
+            [[card.action,card.actionUrl]],
+            false, 
+            card.goalTags);
+        return postCard;  
+    }  
+    return;    
 }
 
 function getPostsCards( goal, posts, type){
@@ -66,11 +89,15 @@ async function loadPostCards(goal){
         const videoCard = getPostsCards(goal, postJson.posts, 'undp_video');
         const newsCard = getPostsCards(goal, postJson.posts, 'undp_article');
         const  samsungCard = getSamsungCard(goal, postJson.posts);
+        if(samsungCard){            
+            mainContent.appendChild(samsungCard);
+        }
+        
         if(impactCard){
             mainContent.appendChild(impactCard);
         }
         
-        mainContent.appendChild(samsungCard);
+       
         if(videoCard){
             mainContent.appendChild(videoCard);
         }
@@ -148,8 +175,7 @@ window.addEventListener('load', () => {
     let spnGoal = document.querySelector('#no');
     spnGoal.innerHTML = goalNo;
     let currentGoal = searchGoal(goalNo);
-    const mainContent = document.getElementById('_main_content');
-    
+    const mainContent = document.getElementById('_main_content');   
     
     let goalCard = loadGoalCard(currentGoal);
     mainContent.appendChild(goalCard);
@@ -161,6 +187,7 @@ window.addEventListener('load', () => {
     mainContent.appendChild(factCard);
     loadStaticGoalsCards(mainContent);
     loadPostCards(goalNo);
+    appendBottons(goalNo);
     
 })
 
