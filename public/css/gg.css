@@ -400,3 +400,22 @@ span.wallp_details a, span.wallp_details a:link, span.wallp_details a:visited {
 .gg-g18 {
     background-color: var(--gg18-color);
 }
+
+.g-detail-nav{
+        position: inherit;
+        bottom: 50px;
+        padding: 10px 20px;
+        display: flex;
+        margin-bottom: 20px;
+        z-index: 15;
+        width: 100vw;        
+}
+
+.btn{
+        margin: 20px;
+        font-size: 12pt;
+        padding: 0 50px;
+        margin: 0 auto;
+        background-color: #0a78fc;
+        color: white !important;
+}
