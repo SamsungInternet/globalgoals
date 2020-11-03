@@ -33,11 +33,29 @@ async function loadDonationsCard(){
     }
 }
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
 window.addEventListener('load', () => {
     //adds the default donate card
     let mc = document.getElementById('_main_content');
-    let defaultDonateCard = createVerticalCard('Donate directly to the UNDP', 'Donate to the UNDP to help tackle the root causes of poverty and create a better life for everyone.', '/images/raster/donate_vert.webp', 0, [['Donate', 'https://give.undp.org/give/120717/#!/donation/checkout']]); 
-    mc.appendChild(defaultDonateCard);
+    let defaultDonateCard = createVerticalCard('Donate directly to the UNDP', 'Donate to the UNDP to help tackle the root causes of poverty and create a better life for everyone.', '/images/raster/donate_vert.webp', 0, [['Donate', 'https://give.undp.org/give/120717/#!/donation/checkout']]);
+    const donationAmount = getRandomInt(5, 20);
+    const goalId = 12; // should be dynamic
+    let specificDonateCard = createVerticalCard(
+        `Donate £${donationAmount}`,
+        `Donate £${donationAmount} to directly support a specific Global Goal through a quick in-app purchase.` +
+        'Your generosity is apprecated.',
+        '/images/raster/donate_vert.webp',
+        0, // What is this?
+        [['Donate', `/directDonation/${donationAmount}/${goalId}`]]
+    );
+
+    // mc.appendChild(defaultDonateCard);
+    mc.appendChild(specificDonateCard);
 });
 
 loadDonationsCard();
