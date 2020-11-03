@@ -33,6 +33,17 @@ async function loadDonationsCard(){
     }
 }
 
+async function loadDirectDonation(amount, goalId){
+    try{
+        const directDonation = await fetch(`/directDonation/${amount}/${goalId}`);
+        const directDonationsJson = await directDonation.json();
+        console.log(directDonationsJson);
+
+    }catch(error){
+        console.log(error);
+    }
+}
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -43,19 +54,20 @@ window.addEventListener('load', () => {
     //adds the default donate card
     let mc = document.getElementById('_main_content');
     let defaultDonateCard = createVerticalCard('Donate directly to the UNDP', 'Donate to the UNDP to help tackle the root causes of poverty and create a better life for everyone.', '/images/raster/donate_vert.webp', 0, [['Donate', 'https://give.undp.org/give/120717/#!/donation/checkout']]);
-    const donationAmount = getRandomInt(5, 20);
+    const amount = getRandomInt(5, 20);
     const goalId = 12; // should be dynamic
     let specificDonateCard = createVerticalCard(
-        `Donate £${donationAmount}`,
-        `Donate £${donationAmount} to directly support a specific Global Goal through a quick in-app purchase.` +
-        'Your generosity is apprecated.',
+        `Donate £${amount}`,
+        `Donate £${amount} to directly support a specific Global Goal through a quick in-app purchase.` +
+        'Your generosity is appreciated.',
         '/images/raster/donate_vert.webp',
         0, // What is this?
-        [['Donate', `/directDonation/${donationAmount}/${goalId}`]]
+        [['Donate', '']]
     );
 
     // mc.appendChild(defaultDonateCard);
     mc.appendChild(specificDonateCard);
 });
 
+loadDirectDonation(20, 12)
 loadDonationsCard();

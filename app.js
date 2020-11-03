@@ -82,7 +82,7 @@ app.get('/globalDonations', async(req,res)=>{
   
 })
 
-app.post('/directDonation/:amount/:goalId', async(req,res)=>{
+app.get('/directDonation/:amount/:goalId', async(req,res)=>{
     const agent = new https.Agent({
         rejectUnauthorized: false
     });
