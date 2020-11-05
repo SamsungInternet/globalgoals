@@ -63,7 +63,7 @@ h1, p {
 .fr-1 {
     width: 100vw;
     height: 100vh;
-    background: url('/images/raster/updates_header.webp'), #8e7ebb;
+    background: url('/images/raster/updates_header.jpg'), #8e7ebb;
     background-size: cover;
     background-blend-mode: multiply;
     background-position: right;
@@ -73,7 +73,7 @@ h1, p {
 .fr-2 {
     width: 100vw;
     height: 100vh;
-    background-image: url('/images/raster/updates_header.webp') #291561;
+    background-image: url('/images/raster/updates_header.jpg') #291561;
     background-size: cover;
     background-position: right;
     padding: 27vh 0rem 0 0;

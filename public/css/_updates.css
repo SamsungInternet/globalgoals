@@ -4,7 +4,7 @@
 }
 
 .header-bg {   
-    background: linear-gradient(rgba(32,32,32,0) 0%, var(--background) 40%), url(../images/raster/updates_header.webp);
+    background: linear-gradient(rgba(32,32,32,0) 0%, var(--background) 40%), url(../images/raster/updates_header.jpg);
     background-position: top;
     background-origin: border-box;
     background-repeat: no-repeat;
