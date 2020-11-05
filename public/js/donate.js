@@ -70,7 +70,8 @@ function getRandomInt(min, max) {
 const donateLink = document.createElement('a')
 donateLink.text = "DONATE NOW"
 donateLink.addEventListener('click', () => {
-    manageStripe(1)
+    // manageStripe(1)
+    console.log("here")
 })
 
 window.addEventListener('load', () => {
@@ -90,9 +91,40 @@ window.addEventListener('load', () => {
         0, // What is this?
         [['Donate', '']]
     );
+    const paymentRequest = stripe.paymentRequest({
+        country: 'US',
+        currency: 'usd',
+        total: {
+            label: 'Demo total',
+            amount: 1099,
+        },
+        requestPayerName: true,
+        requestPayerEmail: true,
+    });
+
+    const stripeDiv = document.createElement('div')
+    stripeDiv.id = "payment-request-button"
+
+    mc.appendChild(stripeDiv);
+
+    const elements = stripe.elements();
+    const prButton = elements.create('paymentRequestButton', {
+        paymentRequest,
+    });
+
+    (async () => {
+        // Check the availability of the Payment Request API first.
+        const result = await paymentRequest.canMakePayment();
+        if (result) {
+            prButton.mount('#payment-request-button');
+        } else {
+            document.getElementById('payment-request-button').style.display = 'none';
+        }
+    })();
+    
 
     // mc.appendChild(defaultDonateCard);
-    mc.appendChild(donateLink);
+
 });
 
 loadDirectDonation(20, 12)
