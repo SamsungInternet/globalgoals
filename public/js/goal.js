@@ -31,7 +31,7 @@ function getSamsungCard(goal, posts){
     if(card){
         postCard = createHorizontalCard(card.title,
             card.message,
-            '/images/raster/samsung.webp',
+            '/images/raster/samsung.jpg',
             goal,
             [[card.action,card.actionUrl]],
             false, 
@@ -127,7 +127,7 @@ function loadStaticGoalsCards(cRootContent){
 
     const developedCard = createVerticalCard('Developed by United Nations',
     'The 17 Global Goals, also called the Sustainable Development Goals (SDGs), were built on decades of work by the UN and adopted by all host countries.',
-    '/images/raster/undp.webp',                                
+    '/images/raster/undp.jpg',                                
     0,
     [['Learn more','www.undp.org']]
     );

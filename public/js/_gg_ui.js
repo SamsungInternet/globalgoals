@@ -226,7 +226,7 @@ let getActionsContent = (cActions) => {
 let loadStaticCards = (cMainContent) =>{
     const donateCard = createVerticalCard( 'Donate directly to the UNDP',
     'Donate as little as £1 to support any Global Goal through a quick in-app purchase.',
-     'images/raster/donate_vert.webp',
+     'images/raster/donate_vert.jpg',
      0,
      [['Donate','https://give.undp.org/give/120717/#!/donation/checkout']]);
 
@@ -242,7 +242,7 @@ let loadStaticCards = (cMainContent) =>{
     cMainContent.appendChild(learnCard);
     const peopleCard = createHorizontalCard('We the People',
     'This star-studded video introduces the new plan for the people and planet: the UN Global Goals for Sustainable Development. Audio is in English.</p>',
-    '/images/raster/video-horz.webp',
+    '/images/raster/video-horz.jpg',
     0,
     [['Watch','https://youtu.be/RpqVmvMCmp0']]
     );
@@ -251,7 +251,7 @@ let loadStaticCards = (cMainContent) =>{
 
     const workCard   = createHorizontalCard('How this app works',
     'When you see ads from this app, you will earn money for donations that support the Global Goals, such as fighting to end poverty, reducing social inequality, and tackling climate change.',
-    '/images/raster/boy-horz.webp',
+    '/images/raster/boy-horz.jpg',
     0,
     null
     );
@@ -259,7 +259,7 @@ let loadStaticCards = (cMainContent) =>{
 
     const unCard     = createVerticalCard('Developed by the United Nations',
                                          'The 17 Global Goals, also called the Sustainable Development Goals (SDGs), were built on decades of work by the UN and adopted by all host countries',
-                                         '/images/raster/undp.webp',
+                                         '/images/raster/undp.jpg',
                                          0,
                                          [['Learn More','www.undp.org']])
 
