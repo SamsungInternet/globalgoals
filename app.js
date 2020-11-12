@@ -3,6 +3,9 @@ const fetch = require('node-fetch');
 const https = require('https');
 const app = express();
 require('dotenv').config();
+const Stripe = require('stripe');
+const stripe = Stripe(process.env.STRIPE_API_KEY);
+
 
 const port = process.env.PORT || 8080;
 const url = process.env.DEV_URL;
@@ -82,39 +85,48 @@ app.get('/globalDonations', async(req,res)=>{
   
 })
 
-app.get('/directDonation/:amount/:goalId', async(req,res)=>{
+app.get('/directDonation/:amount', async(req,res)=>{
+    console.log(req.body)
     const agent = new https.Agent({
         rejectUnauthorized: false
     });
 
-    const body =
-        {
-            "key": process.env.API_KEY,
-            "uid": process.env.UID,
-            "country": "UK",
-            "language": ["en-EN"],
-            "deviceModel" : "Samsung",
-            "clientVersion" : "1.0",
-            "amount": req.params.amount,
-            "currency": "gbp",
-            "goal": req.params.goalId,
-            "paymentMethod": "SPAY", // Should this be dynamic based off user input?
-            "source": "test_token"
+    const amount = req.params.amount;
 
-        }
+    const paymentIntent = await stripe.paymentIntents.create({
+        amount: amount * 100,
+        currency: 'gbp',
+        payment_method_types: ['card']
+    });
 
-    const direct_donation_response = await fetch(url+'/directDonation/', {
-        agent,
-        method: 'post',
-        body:    JSON.stringify(body),
-        headers: { 'Content-Type': 'application/json' },
-    })
+    res.send({clientSecret: paymentIntent.client_secret});
 
-    const donation_data = await direct_donation_response.json();
+    // const body =
+    //     {
+    //         "key": process.env.API_KEY,
+    //         "uid": process.env.UID,
+    //         "country": "UK",
+    //         "language": ["en-EN"],
+    //         "deviceModel" : "Samsung",
+    //         "clientVersion" : "1.0",
+    //         "amount": amount,
+    //         "currency": "gbp",
+    //         "goal": 12,
+    //         "paymentMethod": "SPAY", // Should this be dynamic based off user input?
+    //         "source": "test_token"
+    //     }
 
-    res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
-    res.json(donation_data);
-
+    // const direct_donation_response = await fetch(url+'/directDonation/', {
+    //     agent,
+    //     method: 'post',
+    //     body:    JSON.stringify(body),
+    //     headers: { 'Content-Type': 'application/json' },
+    // })
+    //
+    // const donation_data = await direct_donation_response.json();
+    //
+    // res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+    // res.json(donation_data);
 
 })
 

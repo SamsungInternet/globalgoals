@@ -35,31 +35,82 @@ async function loadDonationsCard(){
     }
 }
 
-async function loadDirectDonation(amount, goalId){
-    try{
-        const directDonation = await fetch(`/directDonation/${amount}/${goalId}`);
-        // const directDonationsJson = await directDonation.json();
-        // console.log(directDonationsJson);
-
-    }catch(error){
-        console.log(error);
-    }
-}
-
 async function manageStripe(amount){
     const paymentRequest = stripe.paymentRequest({
         country: 'GB',
         currency: 'gbp',
         total: {
-            label: 'Demo total',
+            label: 'Donation',
             amount: amount * 100,
         },
         requestPayerName: true,
-        requestPayerEmail: true,
+        requestPayerEmail: true
     });
 
     await paymentRequest.canMakePayment()
     paymentRequest.show();
+    const clientSecret = await fetch(`/directDonation/${amount}`);
+    const cs = await clientSecret.json();
+    paymentRequest.on('paymentmethod', async (ev) => {
+        // Confirm the PaymentIntent without handling potential next actions (yet).
+        const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(
+            cs.clientSecret,
+            {payment_method: ev.paymentMethod.id},
+            {handleActions: false}
+        );
+
+        if (confirmError) {
+            console.log("confirm error") // get error
+            ev.complete('fail');
+        } else {
+            ev.complete('success');
+        }
+    });
+}
+
+async function createStripePaymentReq(amount){
+    const paymentRequest = stripe.paymentRequest({
+        country: 'GB',
+        currency: 'gbp',
+        total: {
+            label: 'Donation',
+            amount: amount * 100,
+        },
+        requestPayerName: true,
+        requestPayerEmail: true
+    });
+
+    return paymentRequest;
+}
+
+async function showStripePaymentRequest(paymentReq){
+    await paymentReq.canMakePayment()
+    paymentReq.show();
+}
+
+async function getStripeClientSecret(amount){
+    const clientSecret = await fetch(`/directDonation/${amount}`);
+    const cs = await clientSecret.json();
+
+    return cs.clientSecret
+}
+
+async function chargeCard(paymentReq, clientSecret){
+    paymentReq.on('paymentmethod', async (ev) => {
+        // Confirm the PaymentIntent without handling potential next actions (yet).
+        const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(
+            clientSecret,
+            {payment_method: ev.paymentMethod.id},
+            {handleActions: false}
+        );
+
+        if (confirmError) {
+            console.log("confirm error") // get error
+            ev.complete('fail');
+        } else {
+            ev.complete('success');
+        }
+    });
 }
 
 function getRandomInt(min, max) {
@@ -67,12 +118,6 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
 }
-const donateLink = document.createElement('a')
-donateLink.text = "DONATE NOW"
-donateLink.addEventListener('click', () => {
-    // manageStripe(1)
-    console.log("here")
-})
 
 window.addEventListener('load', () => {
     //adds the default donate card
@@ -89,43 +134,22 @@ window.addEventListener('load', () => {
         'Your generosity is appreciated.',
         '/images/raster/donate_vert.webp',
         0, // What is this?
-        [['Donate', '']]
+        [['Donate', '']] // Add donate link here
     );
-    const paymentRequest = stripe.paymentRequest({
-        country: 'US',
-        currency: 'usd',
-        total: {
-            label: 'Demo total',
-            amount: 1099,
-        },
-        requestPayerName: true,
-        requestPayerEmail: true,
-    });
 
-    const stripeDiv = document.createElement('div')
-    stripeDiv.id = "payment-request-button"
+    const donateLink = document.createElement('a')
+    donateLink.text = "DONATE NOW"
+    donateLink.addEventListener('click', () => {
+        manageStripe(amount)
+        // const pr = createStripePaymentReq(amount)
+        // showStripePaymentRequest(pr)
+        // const cs = getStripeClientSecret(amount)
+        // chargeCard(pr, cs)
+    })
 
-    mc.appendChild(stripeDiv);
-
-    const elements = stripe.elements();
-    const prButton = elements.create('paymentRequestButton', {
-        paymentRequest,
-    });
-
-    (async () => {
-        // Check the availability of the Payment Request API first.
-        const result = await paymentRequest.canMakePayment();
-        if (result) {
-            prButton.mount('#payment-request-button');
-        } else {
-            document.getElementById('payment-request-button').style.display = 'none';
-        }
-    })();
-    
-
-    // mc.appendChild(defaultDonateCard);
+    mc.appendChild(donateLink);
+    // mc.appendChild(specificDonateCard);
 
 });
 
-loadDirectDonation(20, 12)
 loadDonationsCard();
