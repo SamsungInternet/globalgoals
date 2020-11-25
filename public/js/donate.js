@@ -49,57 +49,13 @@ async function manageStripe(amount){
 
     await paymentRequest.canMakePayment()
     paymentRequest.show();
-    const clientSecret = await fetch(`/directDonation/${amount}`);
+    const clientSecret = await fetch(`/getPaymentIntent/${amount}`);
     const cs = await clientSecret.json();
+    const donationStatus = await fetch(`directDonation/${amount}`)
     paymentRequest.on('paymentmethod', async (ev) => {
         // Confirm the PaymentIntent without handling potential next actions (yet).
         const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(
             cs.clientSecret,
-            {payment_method: ev.paymentMethod.id},
-            {handleActions: false}
-        );
-
-        if (confirmError) {
-            console.log("confirm error") // get error
-            ev.complete('fail');
-        } else {
-            ev.complete('success');
-        }
-    });
-}
-
-async function createStripePaymentReq(amount){
-    const paymentRequest = stripe.paymentRequest({
-        country: 'GB',
-        currency: 'gbp',
-        total: {
-            label: 'Donation',
-            amount: amount * 100,
-        },
-        requestPayerName: true,
-        requestPayerEmail: true
-    });
-
-    return paymentRequest;
-}
-
-async function showStripePaymentRequest(paymentReq){
-    await paymentReq.canMakePayment()
-    paymentReq.show();
-}
-
-async function getStripeClientSecret(amount){
-    const clientSecret = await fetch(`/directDonation/${amount}`);
-    const cs = await clientSecret.json();
-
-    return cs.clientSecret
-}
-
-async function chargeCard(paymentReq, clientSecret){
-    paymentReq.on('paymentmethod', async (ev) => {
-        // Confirm the PaymentIntent without handling potential next actions (yet).
-        const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(
-            clientSecret,
             {payment_method: ev.paymentMethod.id},
             {handleActions: false}
         );
@@ -141,10 +97,6 @@ window.addEventListener('load', () => {
     donateLink.text = "DONATE NOW"
     donateLink.addEventListener('click', () => {
         manageStripe(amount)
-        // const pr = createStripePaymentReq(amount)
-        // showStripePaymentRequest(pr)
-        // const cs = getStripeClientSecret(amount)
-        // chargeCard(pr, cs)
     })
 
     mc.appendChild(donateLink);
