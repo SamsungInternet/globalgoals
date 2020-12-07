@@ -214,6 +214,7 @@ let getActionsContent = (cActions) => {
     cActions.forEach(act => {
         let action = document.createElement('a');
         action.setAttribute('class', 'bubble-action');
+        action.setAttribute('id', act[0].toLowerCase());
         action.innerText = act[0];
         action.setAttribute('href', act[1]);
         actions.appendChild(action);        
