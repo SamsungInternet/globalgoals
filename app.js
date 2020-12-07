@@ -97,16 +97,10 @@ app.get('/getPaymentIntent/:amount', async(req, res) => {
     res.send({clientSecret: paymentIntent.client_secret});
 })
 
-app.get('/directDonation/:amount/:goalId/:currency', async(req,res)=>{
-    console.log(req.body)
+app.get('/directDonation/:amount/:goalId/:paymentType', async(req,res)=>{
     const agent = new https.Agent({
         rejectUnauthorized: false
     });
-
-    const amount = req.params.amount;
-    const goal = req.params.goalId;
-    const currency = req.params.currency;
-
 
     const body =
         {
@@ -116,10 +110,10 @@ app.get('/directDonation/:amount/:goalId/:currency', async(req,res)=>{
             "language": ["en-EN"],
             "deviceModel" : "Samsung",
             "clientVersion" : "1.0",
-            "amount": amount,
-            "currency": currency,
-            "goal": goal,
-            "paymentMethod": "SPAY", // Should this be dynamic based off user input?
+            "amount": req.params.amount,
+            "currency": "gbp",
+            "goal": req.params.goalId,
+            "paymentMethod": req.params.paymentType,
             "source": "test_token"
         }
 
