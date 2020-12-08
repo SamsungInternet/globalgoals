@@ -64,8 +64,22 @@ async function manageStripe(amount, goalId){
             console.log(confirmError)
             ev.complete('fail');
         } else {
-            ev.complete('success');
-            await fetch(`directDonation/${amount}/${goalId}/${ev.methodName}`)
+            try{
+                ev.complete('success');
+                const body = {
+                    amount: `${amount}`,
+                    goalId: `${goalId}`,
+                    methodName: `${ev.methodName}`
+                }
+                await fetch('directDonation/',{
+                    method: 'post',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(body)
+                    }
+                )
+            }catch(error){
+                console.log(error);
+            }    
         }
     });
 }

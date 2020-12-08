@@ -2,9 +2,13 @@ const express = require('express');
 const fetch = require('node-fetch');
 const https = require('https');
 const app = express();
+const bodyParser = require('body-parser');
 require('dotenv').config();
 const Stripe = require('stripe');
 const stripe = Stripe(process.env.STRIPE_API_KEY);
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 
 const port = process.env.PORT || 8080;
@@ -97,7 +101,7 @@ app.get('/getPaymentIntent/:amount', async(req, res) => {
     res.send({clientSecret: paymentIntent.client_secret});
 })
 
-app.get('/directDonation/:amount/:goalId/:paymentType', async(req,res)=>{
+app.post('/directDonation/', async(req,res)=>{
     const agent = new https.Agent({
         rejectUnauthorized: false
     });
@@ -110,10 +114,10 @@ app.get('/directDonation/:amount/:goalId/:paymentType', async(req,res)=>{
             "language": ["en-EN"],
             "deviceModel" : "Samsung",
             "clientVersion" : "1.0",
-            "amount": req.params.amount,
+            "amount": req.body.amount,
             "currency": "gbp",
-            "goal": req.params.goalId,
-            "paymentMethod": req.params.paymentType,
+            "goal": req.body.goalId,
+            "paymentMethod": req.body.methodName,
             "source": "test_token"
         }
 
@@ -162,4 +166,3 @@ app.get('/posts', async(req,res)=>{
   
   
 })
-
