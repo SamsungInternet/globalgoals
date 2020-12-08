@@ -108,4 +108,49 @@ app.get('/globalDonations', async(req,res)=>{
   
 })
 
+app.get('/getPaymentIntent/:amount', async(req, res) => {
+    const amount = req.params.amount;
+
+    const paymentIntent = await stripe.paymentIntents.create({
+        amount: amount * 100,
+        currency: 'gbp',
+        payment_method_types: ['card']
+    });
+
+    res.send({clientSecret: paymentIntent.client_secret});
+})
+
+app.get('/directDonation/:amount/:goalId/:paymentType', async(req,res)=>{
+    const agent = new https.Agent({
+        rejectUnauthorized: false
+    });
+
+    const body =
+        {
+            "key": process.env.API_KEY,
+            "uid": process.env.UID,
+            "country": "UK",
+            "language": ["en-EN"],
+            "deviceModel" : "Samsung",
+            "clientVersion" : "1.0",
+            "amount": req.params.amount,
+            "currency": "gbp",
+            "goal": req.params.goalId,
+            "paymentMethod": req.params.paymentType,
+            "source": "test_token"
+        }
+
+    const direct_donation_response = await fetch(url+'/directDonation/', {
+        agent,
+        method: 'post',
+        body:    JSON.stringify(body),
+        headers: { 'Content-Type': 'application/json' },
+    })
+
+    const donation_data = await direct_donation_response.json();
+
+    res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+    res.json(donation_data);
+
+})
 exports.app = functions.https.onRequest(app);
