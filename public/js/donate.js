@@ -82,7 +82,13 @@ window.addEventListener('load', () => {
     const stripe = Stripe('pk_test_qw1GN1EHv140IRz7N9Q6QcyX', {
         apiVersion: "2020-08-27",
     });
-    let defaultDonateCard = createVerticalCard('Donate directly to the UNDP', 'Donate to the UNDP to help tackle the root causes of poverty and create a better life for everyone.', '/images/raster/donate_vert.webp', 0, [['Donate', 'https://give.undp.org/give/120717/#!/donation/checkout']]);
+    let defaultDonateCard = createVerticalCard(
+        'Donate directly to the UNDP',
+        'Donate to the UNDP to help tackle the root causes of poverty and create a better life for everyone.',
+        '/images/raster/donate_vert.webp',
+        0,
+        [['Donate', 'https://give.undp.org/give/120717/#!/donation/checkout']]
+    );
     const amount = getRandomInt(5, 20);
     const goalId = getRandomInt(1, 19)
     let specificDonateCard = createVerticalCard(
@@ -95,9 +101,10 @@ window.addEventListener('load', () => {
     );
 
     mc.appendChild(specificDonateCard);
+
     const donate = document.getElementById('donate');
     donate.addEventListener('click', () => {
-        manageStripe(amount)
+        manageStripe(amount, goalId)
     }); 
 
 });
