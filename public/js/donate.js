@@ -35,7 +35,7 @@ async function loadDonationsCard(){
     }
 }
 
-async function manageStripe(amount){
+async function manageStripe(amount, goalId){
     const paymentRequest = stripe.paymentRequest({
         country: 'GB',
         currency: 'gbp',
@@ -47,24 +47,25 @@ async function manageStripe(amount){
         requestPayerEmail: true
     });
 
-    await paymentRequest.canMakePayment()
-    paymentRequest.show();
+    await paymentRequest.canMakePayment().then(() => {
+        paymentRequest.show();
+    })
+
     const clientSecret = await fetch(`/getPaymentIntent/${amount}`);
     const cs = await clientSecret.json();
-    const donationStatus = await fetch(`directDonation/${amount}`)
     paymentRequest.on('paymentmethod', async (ev) => {
-        // Confirm the PaymentIntent without handling potential next actions (yet).
-        const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(
+        const {error: confirmError} = await stripe.confirmCardPayment(
             cs.clientSecret,
             {payment_method: ev.paymentMethod.id},
             {handleActions: false}
         );
 
         if (confirmError) {
-            console.log("confirm error") // get error
+            console.log(confirmError)
             ev.complete('fail');
         } else {
             ev.complete('success');
+            await fetch(`directDonation/${amount}/${goalId}/${ev.methodName}`)
         }
     });
 }
@@ -83,7 +84,7 @@ window.addEventListener('load', () => {
     });
     let defaultDonateCard = createVerticalCard('Donate directly to the UNDP', 'Donate to the UNDP to help tackle the root causes of poverty and create a better life for everyone.', '/images/raster/donate_vert.webp', 0, [['Donate', 'https://give.undp.org/give/120717/#!/donation/checkout']]);
     const amount = getRandomInt(5, 20);
-    const goalId = 12; // should be dynamic
+    const goalId = getRandomInt(1, 19)
     let specificDonateCard = createVerticalCard(
         `Donate £${amount}`,
         `Donate £${amount} to directly support a specific Global Goal through a quick in-app purchase.` +
