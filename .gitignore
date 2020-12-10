@@ -65,5 +65,7 @@ node_modules/
 # Yarn Integrity file
 .yarn-integrity
 
-
+/.idea
+package.json
+package-lock.json
 

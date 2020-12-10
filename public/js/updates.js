@@ -151,8 +151,6 @@ async function loadPostCards(){
  
 }
 
-
-
 window.addEventListener('load', () => {
     let mainContent = document.getElementById('_main_content');
     let goal = loadRandomGoal();
@@ -168,3 +166,4 @@ window.addEventListener('load', () => {
 
 loadWallpapers();
 loadPostCards();
+

@@ -11,8 +11,9 @@ npm run build
 ## Developing
 
 ```bash
+mv functions/pacakge.json package.json
 npm install
-npm run serve
+npm run start
 ```
 
 Then open [http://localhost:8080](http://localhost:8080) in your browser.
