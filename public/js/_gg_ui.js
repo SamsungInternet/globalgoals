@@ -158,6 +158,17 @@ let getHorzVertContent = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLan
     let image = document.createElement('img');
     image.setAttribute('src', cImageUrl);
     image.setAttribute('alt',cTitle);
+    
+    if(CardLayoutType.properties[cLayoutType].css_abbrev == 'horz'){
+        width=390;
+        height=180;
+    }else{
+        width=130;
+        height=410;
+    }
+
+    image.setAttribute('width', width);
+    image.setAttribute('height', height);
     let imgClass = `bubble-img-${CardLayoutType.properties[cLayoutType].css_abbrev} `;
     if(cGGNum != 0 && cGGNum != null) { // set the appropriate css classes to the images based on parameters
         imgClass += ` gg-g${cGGNum} vert-horz-trans-img`;
