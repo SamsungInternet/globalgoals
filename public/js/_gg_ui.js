@@ -187,6 +187,9 @@ let getWallpaperContent = (cImageUrl, cLink, cContent) => {
     wallpaper.setAttribute('src', cImageUrl);
     wallpaper.setAttribute('class', 'wallpaper_image');
     wallpaper.setAttribute('alt', 'wallpaper quote');
+    wallpaper.setAttribute('width', 318);
+    wallpaper.setAttribute('height', 256);
+    
     
     if(cLink != null) { //makes the image clickable if a url was specified
         let lwallpaper = document.createElement('a');
