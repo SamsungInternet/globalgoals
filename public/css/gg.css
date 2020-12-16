@@ -410,6 +410,10 @@ span.wallp_details a, span.wallp_details a:link, span.wallp_details a:visited {
         width: 100vw;        
 }
 
+.oui-bubble{
+    border: none;
+}
+
 .btn{
         margin: 20px;
         font-size: 12pt;
