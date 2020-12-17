@@ -412,6 +412,7 @@ span.wallp_details a, span.wallp_details a:link, span.wallp_details a:visited {
 
 .oui-bubble{
     border: none;
+    content-visibility: auto;
 }
 
 .btn{
