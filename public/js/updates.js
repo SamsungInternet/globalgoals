@@ -164,6 +164,8 @@ window.addEventListener('load', () => {
     buttonShowMore.classList.remove('hidden')
 })
 
+
+
 loadWallpapers();
 loadPostCards();
 

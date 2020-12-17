@@ -256,8 +256,7 @@ a:link, a:active, a:visited {
 
 .bubble-img-vert {
     grid-column: 2 / 3;
-    width: 100%;
-    align-self: stretch;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -409,6 +408,10 @@ span.wallp_details a, span.wallp_details a:link, span.wallp_details a:visited {
         margin-bottom: 20px;
         z-index: 15;
         width: 100vw;        
+}
+
+.oui-bubble{
+    border: none;
 }
 
 .btn{

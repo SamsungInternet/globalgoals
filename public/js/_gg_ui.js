@@ -29,13 +29,15 @@ window.addEventListener('load', () => {
     let _page_title = document.querySelector('#_page_title');
     let observerStickyTitle = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if (entry.intersectionRatio > 0) {
-                document.querySelector('._sticky_title').classList.add('_sticky_title_disappear');
-                document.querySelector('._sticky_title').classList.remove('_sticky_title_appear');
-            } else {
-                document.querySelector('._sticky_title').classList.add('_sticky_title_appear');
-                document.querySelector('._sticky_title').classList.remove('_sticky_title_disappear');
-            }
+            if(document.querySelector('._sticky_title')){
+                if (entry.intersectionRatio > 0 ) {
+                    document.querySelector('._sticky_title').classList.add('_sticky_title_disappear');
+                    document.querySelector('._sticky_title').classList.remove('_sticky_title_appear');
+                } else {
+                    document.querySelector('._sticky_title').classList.add('_sticky_title_appear');
+                    document.querySelector('._sticky_title').classList.remove('_sticky_title_disappear');
+                }
+            }    
         });
     });
     observerStickyTitle.observe(_page_title);
@@ -158,6 +160,17 @@ let getHorzVertContent = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLan
     let image = document.createElement('img');
     image.setAttribute('src', cImageUrl);
     image.setAttribute('alt',cTitle);
+    
+    if(CardLayoutType.properties[cLayoutType].css_abbrev == 'horz'){
+        width=390;
+        height=180;
+    }else{
+        width=130;
+        height=410;
+    }
+
+    image.setAttribute('width', width);
+    image.setAttribute('height', height);
     let imgClass = `bubble-img-${CardLayoutType.properties[cLayoutType].css_abbrev} `;
     if(cGGNum != 0 && cGGNum != null) { // set the appropriate css classes to the images based on parameters
         imgClass += ` gg-g${cGGNum} vert-horz-trans-img`;
@@ -176,6 +189,9 @@ let getWallpaperContent = (cImageUrl, cLink, cContent) => {
     wallpaper.setAttribute('src', cImageUrl);
     wallpaper.setAttribute('class', 'wallpaper_image');
     wallpaper.setAttribute('alt', 'wallpaper quote');
+    wallpaper.setAttribute('width', 318);
+    wallpaper.setAttribute('height', 256);
+    
     
     if(cLink != null) { //makes the image clickable if a url was specified
         let lwallpaper = document.createElement('a');
