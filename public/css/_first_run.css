@@ -62,12 +62,22 @@ h1, p {
 
 .fr-1 {
     width: 100vw;
-    height: 100vh;
+    height: 100vh;  
+    padding: 42vh 0rem 0 0;
+}
+
+.no-webp .fr-1 {
     background: url('/images/raster/updates_header.jpg'), #8e7ebb;
     background-size: cover;
     background-blend-mode: multiply;
     background-position: right;
-    padding: 42vh 0rem 0 0;
+}
+
+.webp .fr-1 {
+    background: url('/images/raster/updates_header.webp'), #8e7ebb;
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-position: right;
 }
 
 .fr-2 {

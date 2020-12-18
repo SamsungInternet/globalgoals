@@ -3,13 +3,22 @@
     margin-bottom: 1rem;
 }
 
-.header-bg {   
+.no-webp .header-bg {   
     background: linear-gradient(rgba(32,32,32,0) 0%, var(--background) 40%), url(../images/raster/updates_header.jpg);
     background-position: top;
     background-origin: border-box;
     background-repeat: no-repeat;
     background-size: 100vw;
 }
+
+.header-bg {   
+    background: linear-gradient(rgba(32,32,32,0) 0%, var(--background) 40%), url(../images/raster/updates_header.webp);
+    background-position: top;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-size: 100vw;
+}
+
 
 .modal{
     display: none
