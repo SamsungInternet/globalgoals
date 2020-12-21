@@ -29,13 +29,15 @@ window.addEventListener('load', () => {
     let _page_title = document.querySelector('#_page_title');
     let observerStickyTitle = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if (entry.intersectionRatio > 0) {
-                document.querySelector('._sticky_title').classList.add('_sticky_title_disappear');
-                document.querySelector('._sticky_title').classList.remove('_sticky_title_appear');
-            } else {
-                document.querySelector('._sticky_title').classList.add('_sticky_title_appear');
-                document.querySelector('._sticky_title').classList.remove('_sticky_title_disappear');
-            }
+            if(document.querySelector('._sticky_title')){
+                if (entry.intersectionRatio > 0 ) {
+                    document.querySelector('._sticky_title').classList.add('_sticky_title_disappear');
+                    document.querySelector('._sticky_title').classList.remove('_sticky_title_appear');
+                } else {
+                    document.querySelector('._sticky_title').classList.add('_sticky_title_appear');
+                    document.querySelector('._sticky_title').classList.remove('_sticky_title_disappear');
+                }
+            }    
         });
     });
     observerStickyTitle.observe(_page_title);
@@ -158,6 +160,17 @@ let getHorzVertContent = (cLayoutType, cTitle, cContent, cImageUrl, cGGNum, cLan
     let image = document.createElement('img');
     image.setAttribute('src', cImageUrl);
     image.setAttribute('alt',cTitle);
+    
+    if(CardLayoutType.properties[cLayoutType].css_abbrev == 'horz'){
+        width=390;
+        height=180;
+    }else{
+        width=130;
+        height=410;
+    }
+
+    image.setAttribute('width', width);
+    image.setAttribute('height', height);
     let imgClass = `bubble-img-${CardLayoutType.properties[cLayoutType].css_abbrev} `;
     if(cGGNum != 0 && cGGNum != null) { // set the appropriate css classes to the images based on parameters
         imgClass += ` gg-g${cGGNum} vert-horz-trans-img`;
@@ -176,6 +189,9 @@ let getWallpaperContent = (cImageUrl, cLink, cContent) => {
     wallpaper.setAttribute('src', cImageUrl);
     wallpaper.setAttribute('class', 'wallpaper_image');
     wallpaper.setAttribute('alt', 'wallpaper quote');
+    wallpaper.setAttribute('width', 318);
+    wallpaper.setAttribute('height', 256);
+    
     
     if(cLink != null) { //makes the image clickable if a url was specified
         let lwallpaper = document.createElement('a');
@@ -214,6 +230,7 @@ let getActionsContent = (cActions) => {
     cActions.forEach(act => {
         let action = document.createElement('a');
         action.setAttribute('class', 'bubble-action');
+        action.setAttribute('id', act[0].toLowerCase());
         action.innerText = act[0];
         action.setAttribute('href', act[1]);
         actions.appendChild(action);        
@@ -226,7 +243,7 @@ let getActionsContent = (cActions) => {
 let loadStaticCards = (cMainContent) =>{
     const donateCard = createVerticalCard( 'Donate directly to the UNDP',
     'Donate as little as £1 to support any Global Goal through a quick in-app purchase.',
-     'images/raster/donate_vert.webp',
+     'images/raster/donate_vert.jpg',
      0,
      [['Donate','https://give.undp.org/give/120717/#!/donation/checkout']]);
 
@@ -242,7 +259,7 @@ let loadStaticCards = (cMainContent) =>{
     cMainContent.appendChild(learnCard);
     const peopleCard = createHorizontalCard('We the People',
     'This star-studded video introduces the new plan for the people and planet: the UN Global Goals for Sustainable Development. Audio is in English.</p>',
-    '/images/raster/video-horz.webp',
+    '/images/raster/video-horz.jpg',
     0,
     [['Watch','https://youtu.be/RpqVmvMCmp0']]
     );
@@ -251,7 +268,7 @@ let loadStaticCards = (cMainContent) =>{
 
     const workCard   = createHorizontalCard('How this app works',
     'When you see ads from this app, you will earn money for donations that support the Global Goals, such as fighting to end poverty, reducing social inequality, and tackling climate change.',
-    '/images/raster/boy-horz.webp',
+    '/images/raster/boy-horz.jpg',
     0,
     null
     );
@@ -259,7 +276,7 @@ let loadStaticCards = (cMainContent) =>{
 
     const unCard     = createVerticalCard('Developed by the United Nations',
                                          'The 17 Global Goals, also called the Sustainable Development Goals (SDGs), were built on decades of work by the UN and adopted by all host countries',
-                                         '/images/raster/undp.webp',
+                                         '/images/raster/undp.jpg',
                                          0,
                                          [['Learn More','www.undp.org']])
 

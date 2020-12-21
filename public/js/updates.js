@@ -99,7 +99,7 @@ async function loadWallpapers(){
             wallpaperCard = createWallpaperCard(`<p>Julia Gillard</p>
                                                         <p>#GlobalGoal4</p>
                                                         <a href="goal.html?no=4" id="link-goal">Learn More</a>`,
-                                                        '/images/raster/wallpaper-quote.webp',
+                                                        '/images/raster/wallpaper-quote.jpg',
                                                         4 
                                                       )
         }                                            
@@ -151,8 +151,6 @@ async function loadPostCards(){
  
 }
 
-
-
 window.addEventListener('load', () => {
     let mainContent = document.getElementById('_main_content');
     let goal = loadRandomGoal();
@@ -166,5 +164,8 @@ window.addEventListener('load', () => {
     buttonShowMore.classList.remove('hidden')
 })
 
+
+
 loadWallpapers();
 loadPostCards();
+

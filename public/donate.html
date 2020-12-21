@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="css/gg-dark.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="css/gg-light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">
     <link href="css/_donate.css" rel="stylesheet">
-    <script src="js/donate.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="module" src="js/donate.js"></script>
     <script src="js/_gg_ui.js"></script>
     <link rel="shortcut icon" type="image/png" href="images/raster/icn_goals_colored.png"/>
     <title>Samsung | The Global Goals : Donate</title>
@@ -35,19 +36,19 @@
         <img id="main-colorbar" src="images/ui_elements/colorband.svg" alt="main bar">
         <nav id="main-menu">
             <a href="index.html" class="main-menu-button">
-                <img src="images/ui_elements/icn_updates.svg" class="menu-icon" alt=""/>  
+                <img src="images/ui_elements/icn_updates.svg" width="40" height="40" class="menu-icon" alt=""/>  
                 <span>Updates</span>      
             </a>
             <a href="/goals.html"  class="main-menu-button">
-                <img src="images/ui_elements/icn_goals.svg"  class="menu-icon" alt=""/>
+                <img src="images/ui_elements/icn_goals.svg" width="40" height="40"  class="menu-icon" alt=""/>
                 <span>Goals</span>
             </a>
             <div class="main-menu-button main-menu-button--active">
-                <img src="images/ui_elements/icn_donate_selected.svg" class="menu-icon" alt=""/>
+                <img src="images/ui_elements/icn_donate_selected.svg" width="40" height="40" class="menu-icon" alt=""/>
                 <span>Donate</span>
             </div>
             <a href="settings.html"  class="main-menu-button">
-                <img src="images/ui_elements/icn_settings.svg"  class="menu-icon" alt=""/>
+                <img src="images/ui_elements/icn_settings.svg" width="40" height="40" class="menu-icon" alt=""/>
                 <span>Settings</span>
             </a>
         </nav>
