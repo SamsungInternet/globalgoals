@@ -49,8 +49,10 @@ async function manageStripe(amount, goalId){
 
     await paymentRequest.canMakePayment().then(() => {
         paymentRequest.show();
-    }).catch(() => {
-        window.alert('Please add a payment card to your browser.')
+    }).catch((err) => {
+        if(err == `IntegrationError: Payment Request is not available in this browser.`){
+            window.alert('Please add a payment card to your browser.')
+        }
     })
 
     const clientSecret = await fetch(`/getPaymentIntent/${amount}`);
