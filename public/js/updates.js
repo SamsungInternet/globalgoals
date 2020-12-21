@@ -152,14 +152,7 @@ async function loadPostCards(){
 }
 
 window.addEventListener('load', () => {
-    let mainContent = document.getElementById('_main_content');
-    let goal = loadRandomGoal();
-    let goalCard = loadGoalCard(goal);
-    mainContent.appendChild(goalCard);
-    loadStaticCards(mainContent);   
-    let factCard = loadFactsGoalCard(goal);
-    mainContent.appendChild(factCard);
-   
+      
     let buttonShowMore = document.getElementById('_btn_showmore');
     buttonShowMore.classList.remove('hidden')
 })
