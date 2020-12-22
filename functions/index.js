@@ -4,9 +4,16 @@ const express = require('express');
 const fetch = require('node-fetch');
 const https = require('https');
 const app = express();
+const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const url = process.env.DEV_URL;
+const Stripe = require('stripe');
+const stripe = Stripe(process.env.STRIPE_API_KEY);
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 
 app.use(express.static('public'));
 
