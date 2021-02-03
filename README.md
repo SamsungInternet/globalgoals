@@ -50,11 +50,11 @@ Depending on your configuration this will deploy the code to the proper environm
 
 The following articles are related to the project and the technologies used: Progressive Web Apps, One UI, Firebase etc.
 - [Intro to Samsung Global Goals Web Debut](https://medium.com/samsung-internet-dev/samsung-the-global-goals-web-debuts-f8cdae4ec21d)
-- [One UI Web](bhttps://oneuiweb.dev/#/)
-- [Build your first PWA] (https://medium.com/samsung-internet-dev/pwa-series-hands-on-create-your-first-pwa-step-by-step-5bb7a6605349)
-- [Using Firebase to host Node Projects and Functions] (https://www.youtube.com/watch?v=LOeioOKUKI8)
-- [Progressive Web Apps Documentation by MDN] (https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps])
-- [How we implemented Web Payment API and Stripe] (https://medium.com/samsung-internet-dev/getting-paid-with-the-payment-request-api-1c28d691e9d5)
+- [One UI Web](https://oneuiweb.dev/#/)
+- [Build your first PWA](https://medium.com/samsung-internet-dev/pwa-series-hands-on-create-your-first-pwa-step-by-step-5bb7a6605349)
+- [Using Firebase to host Node Projects and Functions](https://www.youtube.com/watch?v=LOeioOKUKI8)
+- [Progressive Web Apps Documentation by MDN](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps])
+- [How we implemented Web Payment API and Stripe](https://medium.com/samsung-internet-dev/getting-paid-with-the-payment-request-api-1c28d691e9d5)
 
 
 
